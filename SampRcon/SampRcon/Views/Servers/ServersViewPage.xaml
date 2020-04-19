@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             BackgroundColor="#F8F8F8"
+             Title="{x:Static resx:AppResources.ServersLabel}"
+             x:Name="ServersView"
+             xmlns:resx="clr-namespace:SampRcon.Resources"
+             xmlns:valueconverters="clr-namespace:SampRcon.ValueConverters"
+             x:Class="SampRcon.Views.Servers.ServersViewPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <valueconverters:SacnrTotalServersConverter x:Key="SacnrTotalServersCount" />
+            <valueconverters:TrimValueConverter x:Key="TrimValue" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Refresh" Command="{Binding RefreshCommand}" Text="{x:Static resx:AppResources.ToolBarRefresh}" Order="Secondary"/>
+        <ToolbarItem x:Name="GoTop" Clicked="GoTop_Clicked"  Text="{x:Static resx:AppResources.ToolBarGoUp}" Order="Secondary"/>
+        <ToolbarItem x:Name="GoDown" Clicked="GoDown_Clicked" Text="{x:Static resx:AppResources.ToolBarGoDown}" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
+            <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                         Command="{Binding RefreshCommand}"
+                         Margin="10,10,10,10">
+                <CollectionView x:Name="serversCollection"
+                                SelectionMode="Single"                                                   
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                VerticalScrollBarVisibility="Always">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Invoked="RconSwipeItem_Invoked"
+                                                   IconImageSource="rcon"
+                                                   BackgroundColor="Transparent" />
+                                        <SwipeItem Invoked="SaveSwipeItem_Invoked"
+                                                   IconImageSource="save"
+                                                   BackgroundColor="Transparent" />
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Frame HasShadow="False"
+                                   BorderColor="#ECECEC"
+                                   BackgroundColor="White"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand">
+                                    <Grid BackgroundColor="Transparent"
+                                      HorizontalOptions="FillAndExpand"
+                                      VerticalOptions="FillAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Label 
+                                        Grid.Row="0"
+                                        Text="{Binding Hostname, Converter={StaticResource TrimValue}}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="StartAndExpand"/>                                        
+                                        <Label x:Name="serverIP"
+                                               Grid.Row="1"
+                                               FontSize="Medium"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="StartAndExpand">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding IP}" />
+                                                    <Span Text=":" />
+                                                    <Span Text="{Binding Port}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label x:Name="ipServer" Text="{Binding IP}" IsVisible="False"/>
+                                   </Grid>
+                                </Frame>
+                            </SwipeView>
+                            
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+            <StackLayout Orientation="Horizontal">
+                <Label Margin="10"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start"
+                   TextColor="Black"
+                   FontSize="Large">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{x:Static resx:AppResources.ServersLabel}" />
+                            <Span Text=": " />
+                            <Span Text="{Binding ServersList.Count}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Margin="10"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start"
+                   TextColor="Black"
+                   FontSize="Large">
+                   <Label.FormattedText>
+                   <FormattedString>
+                       <Span Text="{x:Static resx:AppResources.SacnrTotalServers}" />
+                       <Span Text=" " />
+                       <Span Text="{Binding IpServers.Count, Converter={StaticResource SacnrTotalServersCount}}" />
+                   </FormattedString>
+                   </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+    

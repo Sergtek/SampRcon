@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients" 
+             Title="{x:Static resx:AppResources.RconViewTitle}"
+             BackgroundColor="#F8F8F8"
+             xmlns:resx="clr-namespace:SampRcon.Resources"
+             x:Class="SampRcon.Views.Rcon.RconViewPage">
+    <ContentPage.Content>
+        <Grid BackgroundColor="Transparent"    
+              RowSpacing="0"
+              HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"/>
+            </Grid.RowDefinitions>
+            <magic:GradientView VerticalOptions="FillAndExpand" >
+                <magic:GradientView.GradientSource>
+                    <magic:CssGradientSource>
+                        <x:String>
+                            <![CDATA[
+                                linear-gradient(45deg, rgb(149, 10, 155) 0%, rgb(149, 10, 155) 9%,rgb(120, 16, 136) 9%, rgb(120, 16, 136) 13%,rgb(178, 3, 174) 13%, rgb(178, 3, 174) 32%,rgb(91, 23, 117) 32%, rgb(91, 23, 117) 42%,rgb(32, 36, 79) 42%, rgb(32, 36, 79) 46%,rgb(61, 30, 98) 46%, rgb(61, 30, 98) 70%,rgb(3, 43, 60) 70%, rgb(3, 43, 60) 100%)
+                            ]]>
+                        </x:String>
+                    </magic:CssGradientSource>
+                </magic:GradientView.GradientSource>
+            </magic:GradientView>
+            <Grid Grid.Row="0"
+                  BackgroundColor="Transparent"    
+                  RowSpacing="0"
+                  Margin="5,5,5,5"
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ScrollView x:Name="logScroll" Grid.Row="0" VerticalScrollBarVisibility="Always" Orientation="Vertical">
+                    <Frame BackgroundColor="White" BorderColor="White" HasShadow="False" Padding="1">
+                        <CollectionView ItemsSource="{Binding LogValue}"
+                        SelectionMode="None"      
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        VerticalScrollBarVisibility="Always">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <ScrollView Orientation="Both" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalScrollBarVisibility="Always" VerticalScrollBarVisibility="Always">
+                                        <Label Text="{Binding}" 
+                                               Margin="10,10,0,10"
+                                               FontSize="Medium" 
+                                               FontAttributes="Bold"/>
+                                    </ScrollView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Frame>
+                </ScrollView>
+                <Grid Grid.Row="1" 
+                      BackgroundColor="Transparent"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70*"/>
+                        <ColumnDefinition Width="30*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Column="0" Grid.Row="1" BorderColor="#D6D4D4" HasShadow="False" Padding="1">
+                    <Entry 
+                    Margin="5,5,5,5"
+                    Text="{Binding CommandValue}"
+                    VerticalTextAlignment="Center"
+                    BackgroundColor="White"
+                    FontSize="Medium"
+                    ClearButtonVisibility="WhileEditing"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"/>
+                    </Frame>
+                    <Button x:Name="sendCommand"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Text="{x:Static resx:AppResources.RconSendButtonValue}"
+                    Command="{Binding SendRCONCommand}"
+                    BackgroundColor="#233346"
+                    TextColor="White"
+                    FontSize="Medium"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
