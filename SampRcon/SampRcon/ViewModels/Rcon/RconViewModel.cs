@@ -112,7 +112,10 @@ namespace SampRcon.ViewModels.Rcon
                 string[] info = sQuery.Store(count);
                 if (info.Any())
                 {
-                    LogValue.Add($"{info.First()}");
+                    foreach(var result in info)
+                    {
+                        LogValue.Add($"{result}");
+                    }
                 }
                 else
                 {

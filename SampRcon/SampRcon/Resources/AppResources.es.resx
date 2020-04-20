@@ -124,7 +124,13 @@
     <value>Añadir servidor</value>
   </data>
   <data name="CreditsApisLabel" xml:space="preserve">
-    <value>API</value>
+    <value>API:</value>
+  </data>
+  <data name="CreditsOpenCodeLabel" xml:space="preserve">
+    <value>Código fuente:</value>
+  </data>
+  <data name="CreditsOpenCodeSite" xml:space="preserve">
+    <value>GitHub</value>
   </data>
   <data name="CreditsQueryLabel" xml:space="preserve">
     <value>Mecanismo de consulta:</value>
@@ -178,7 +184,7 @@
     <value>Comandos RCON</value>
   </data>
   <data name="SacnrTotalServers" xml:space="preserve">
-    <value>Servidores SACNR:</value>
+    <value>SACNR:</value>
   </data>
   <data name="ServersLabel" xml:space="preserve">
     <value>Servidores</value>

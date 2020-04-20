@@ -79,11 +79,29 @@ namespace SampRcon.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to API.
+        ///   Looks up a localized string similar to API:.
         /// </summary>
         public static string CreditsApisLabel {
             get {
                 return ResourceManager.GetString("CreditsApisLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source code:.
+        /// </summary>
+        public static string CreditsOpenCodeLabel {
+            get {
+                return ResourceManager.GetString("CreditsOpenCodeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GitHub.
+        /// </summary>
+        public static string CreditsOpenCodeSite {
+            get {
+                return ResourceManager.GetString("CreditsOpenCodeSite", resourceCulture);
             }
         }
         
@@ -241,7 +259,7 @@ namespace SampRcon.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SACNR servers:.
+        ///   Looks up a localized string similar to SACNR:.
         /// </summary>
         public static string SacnrTotalServers {
             get {

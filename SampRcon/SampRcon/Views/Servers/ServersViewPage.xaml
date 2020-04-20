@@ -64,7 +64,7 @@
                                         Text="{Binding Hostname, Converter={StaticResource TrimValue}}"
                                         FontSize="Medium"
                                         HorizontalOptions="Start"
-                                        VerticalOptions="StartAndExpand"/>                                        
+                                        VerticalOptions="StartAndExpand"/>
                                         <Label x:Name="serverIP"
                                                Grid.Row="1"
                                                FontSize="Medium"
@@ -79,42 +79,44 @@
                                             </Label.FormattedText>
                                         </Label>
                                         <Label x:Name="ipServer" Text="{Binding IP}" IsVisible="False"/>
-                                   </Grid>
+                                    </Grid>
                                 </Frame>
                             </SwipeView>
-                            
+
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </RefreshView>
-            <StackLayout Orientation="Horizontal">
-                <Label Margin="10"
+            <ScrollView Orientation="Vertical" Margin="0,0,0,10">
+                <StackLayout Orientation="Horizontal">
+                    <Label Margin="10"
                    HorizontalOptions="Start"
                    VerticalOptions="Start"
                    TextColor="Black"
                    FontSize="Large">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="{x:Static resx:AppResources.ServersLabel}" />
-                            <Span Text=": " />
-                            <Span Text="{Binding ServersList.Count}" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label Margin="10"
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static resx:AppResources.ServersLabel}" />
+                                <Span Text=": " />
+                                <Span Text="{Binding ServersList.Count}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Margin="10"
                    HorizontalOptions="Start"
                    VerticalOptions="Start"
                    TextColor="Black"
                    FontSize="Large">
-                   <Label.FormattedText>
-                   <FormattedString>
-                       <Span Text="{x:Static resx:AppResources.SacnrTotalServers}" />
-                       <Span Text=" " />
-                       <Span Text="{Binding IpServers.Count, Converter={StaticResource SacnrTotalServersCount}}" />
-                   </FormattedString>
-                   </Label.FormattedText>
-                </Label>
-            </StackLayout>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static resx:AppResources.SacnrTotalServers}" />
+                                <Span Text=" " />
+                                <Span Text="{Binding IpServers.Count, Converter={StaticResource SacnrTotalServersCount}}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

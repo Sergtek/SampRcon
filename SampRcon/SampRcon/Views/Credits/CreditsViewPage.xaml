@@ -29,6 +29,8 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Label 
                 Grid.Row="0"
@@ -61,13 +63,28 @@
                 VerticalOptions="StartAndExpand"/>
                 <Label 
                 Grid.Row="3"
-                Text="{x:Static resx:AppResources.CreditsApisLabel}"
+                Text="{x:Static resx:AppResources.CreditsOpenCodeLabel}"
                 FontAttributes="Bold"
                 FontSize="Medium"
                 HorizontalOptions="Start"
                 VerticalOptions="StartAndExpand"/>
                 <hyperlink:HyperlinkLabel 
                 Grid.Row="4"
+                Text="{x:Static resx:AppResources.CreditsOpenCodeSite}"
+                Url="https://github.com/nacompllo/SampRcon"
+                FontAttributes="Bold"                
+                FontSize="Medium"
+                HorizontalOptions="Start"
+                VerticalOptions="StartAndExpand"/>
+                <Label 
+                Grid.Row="5"
+                Text="{x:Static resx:AppResources.CreditsApisLabel}"
+                FontAttributes="Bold"
+                FontSize="Medium"
+                HorizontalOptions="Start"
+                VerticalOptions="StartAndExpand"/>
+                <hyperlink:HyperlinkLabel 
+                Grid.Row="6"
                 Text="SACNR Monitor"
                 Url="https://monitor.sacnr.com/api.html"
                 FontAttributes="Bold"                
@@ -75,14 +92,14 @@
                 HorizontalOptions="Start"
                 VerticalOptions="StartAndExpand"/>
                 <Label 
-                Grid.Row="5"
+                Grid.Row="7"
                 Text="{x:Static resx:AppResources.CreditsQueryLabel}"
                 FontAttributes="Bold"
                 FontSize="Medium"
                 HorizontalOptions="Start"
                 VerticalOptions="StartAndExpand"/>
                 <hyperlink:HyperlinkLabel 
-                Grid.Row="6"
+                Grid.Row="8"
                 Text="SA-MP Wiki"
                 Url="https://wiki.sa-mp.com/wiki/Query_Mechanism/Csharp"
                 FontAttributes="Bold"                
@@ -90,30 +107,16 @@
                 HorizontalOptions="Start"
                 VerticalOptions="StartAndExpand"/>
                 <Label 
-                Grid.Row="7"
+                Grid.Row="9"
                 Text="{x:Static resx:AppResources.CreditsResourceLabel}"
                 FontAttributes="Bold"
                 FontSize="Medium"
                 HorizontalOptions="Start"
                 VerticalOptions="StartAndExpand"/>
                 <hyperlink:HyperlinkLabel 
-                Grid.Row="8"
+                Grid.Row="10"
                 Text="bqlqn:"
                 Url="https://www.flaticon.com/authors/bqlqn"
-                FontAttributes="Bold"                
-                FontSize="Medium"
-                HorizontalOptions="Start"
-                VerticalOptions="StartAndExpand"/>
-                <Image 
-                Grid.Row="9"
-                HorizontalOptions="Start"                    
-                HeightRequest="50"
-                WidthRequest="50"
-                Source="save"/>
-                <hyperlink:HyperlinkLabel 
-                Grid.Row="10"
-                Text="Freepik:"
-                Url="https://www.flaticon.com/authors/freepik"
                 FontAttributes="Bold"                
                 FontSize="Medium"
                 HorizontalOptions="Start"
@@ -123,10 +126,25 @@
                 HorizontalOptions="Start"                    
                 HeightRequest="50"
                 WidthRequest="50"
+                Source="save"/>
+                <hyperlink:HyperlinkLabel 
+                Grid.Row="12"
+                Text="Freepik:"
+                Url="https://www.flaticon.com/authors/freepik"
+                FontAttributes="Bold"                
+                FontSize="Medium"
+                HorizontalOptions="Start"
+                VerticalOptions="StartAndExpand"/>
+                <Image 
+                Grid.Row="13"
+                HorizontalOptions="Start"                    
+                HeightRequest="50"
+                WidthRequest="50"
                 Source="remove"/>
                 <Image 
-                Grid.Row="12"
-                HorizontalOptions="Start"                    
+                Grid.Row="14"      
+                Margin="0,0,0,10"
+                HorizontalOptions="Start"       
                 HeightRequest="50"
                 WidthRequest="50"
                 Source="rcon"/>
