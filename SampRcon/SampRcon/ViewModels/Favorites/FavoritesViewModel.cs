@@ -64,8 +64,10 @@ namespace SampRcon.ViewModels.Favorites
 
         private async Task AuthRconNavigate(Server server)
         {
+            var jsonServer = SerializeServer(server);
             ShellNavigationState state = Shell.Current.CurrentState;
-            await Shell.Current.GoToAsync($"{state.Location}/authenticationrconview?ipServer={server.IP}&portServer={server.Port}");
+
+            await Shell.Current.GoToAsync($"{state.Location}/authenticationrconview?currentServer={jsonServer}");
         }
 
         private async Task SaveServer(Server server)

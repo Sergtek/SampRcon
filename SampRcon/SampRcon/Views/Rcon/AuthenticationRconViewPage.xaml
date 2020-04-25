@@ -33,7 +33,7 @@
                 VerticalOptions="StartAndExpand"/>
             <Entry 
                 Grid.Row="1"
-                Text="{Binding CurrentIpServer}"
+                Text="{Binding Server.IP}"
                 FontSize="Medium"
                 ClearButtonVisibility="WhileEditing"
                 HorizontalOptions="FillAndExpand"
@@ -47,7 +47,7 @@
                 VerticalOptions="StartAndExpand"/>
             <Entry 
                 Grid.Row="3"
-                Text="{Binding CurrentPortServer}"
+                Text="{Binding Server.Port}"
                 FontSize="Medium"
                 ClearButtonVisibility="WhileEditing"
                 HorizontalOptions="FillAndExpand"
@@ -61,7 +61,7 @@
                 VerticalOptions="StartAndExpand"/>
             <Entry 
                 Grid.Row="5"
-                Text="{Binding RconPassword}"
+                Text="{Binding Server.RconPassword}"
                 IsPassword="True"
                 FontSize="Medium"
                 ClearButtonVisibility="WhileEditing"

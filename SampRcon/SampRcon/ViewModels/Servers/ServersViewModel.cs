@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using SampRcon.Mappers;
+﻿using SampRcon.Mappers;
 using SampRcon.Models;
 using SampRcon.ViewModels.Base;
 using System;
@@ -41,7 +40,7 @@ namespace SampRcon.ViewModels.SACNR
             }
         }
 
-        private List<string> _ipServers;
+        private List<string> _ipServers = new List<string> { string.Empty };
         public List<string> IpServers
         {
             get => _ipServers;
@@ -72,42 +71,49 @@ namespace SampRcon.ViewModels.SACNR
 
         private async Task GetAllServers()
         {
-            var result = await Client.GetStringAsync(_serversMasterEndpoint);
-            IpServers = new List<string>(result.Split('\n'));
-            var numberServers = IpServers.Count;
-            var localServersCount = ServersList.Count;
-            var maxNewServers = 9;
-            var newServersAdded = 0;
-
-            for (var i = localServersCount; i < numberServers && newServersAdded <= maxNewServers; i++)
+            try
             {
-                var currentServerFromList = ServersList.Where(x => x.IP == IpServers[i]);
-                var existServer = currentServerFromList.Any();
+                var result = await Client.GetStringAsync(_serversMasterEndpoint);
+                IpServers = new List<string>(result.Split('\n'));
+                var numberServers = IpServers.Count;
+                var localServersCount = ServersList.Count;
+                var maxNewServers = 9;
+                var newServersAdded = 0;
 
-                var splitServer = IpServers[i].Split(':');
-                var serverIp = splitServer.First();
-                var serverPort = splitServer[1];
-                var serverEndpoint = _serverEndpoint;
-                serverEndpoint = serverEndpoint.Replace("IP=&Port=", $"IP={serverIp}&Port={serverPort}");
-                var serverData = await Client.GetStringAsync(serverEndpoint);
-                var currentServer = JsonConvert.DeserializeObject<Server>(serverData);
-                var mapServer = currentServer.MapToModel();
+                for (var i = localServersCount; i < numberServers && newServersAdded <= maxNewServers; i++)
+                {
+                    var currentServerFromList = ServersList.Where(x => x.IP == IpServers[i]);
+                    var existServer = currentServerFromList.Any();
 
-                if (existServer && currentServerFromList.FirstOrDefault().Equals(mapServer))
-                {
-                    continue;
-                }
+                    var splitServer = IpServers[i].Split(':');
+                    var serverIp = splitServer.First();
+                    var serverPort = splitServer[1];
+                    var serverEndpoint = _serverEndpoint;
+                    serverEndpoint = serverEndpoint.Replace("IP=&Port=", $"IP={serverIp}&Port={serverPort}");
+                    var serverData = await Client.GetStringAsync(serverEndpoint);
+                    var currentServer = DeserializeServer(serverData);
+                    var mapServer = currentServer.MapToModel();
 
-                if (existServer)
-                {
-                    var server = ServersList[i];
-                    server = mapServer;
+                    if (existServer && currentServerFromList.FirstOrDefault().Equals(mapServer))
+                    {
+                        continue;
+                    }
+
+                    if (existServer)
+                    {
+                        var server = ServersList[i];
+                        server = mapServer;
+                    }
+                    else
+                    {
+                        newServersAdded++;
+                        ServersList.Add(mapServer);
+                    }
                 }
-                else
-                {
-                    newServersAdded++;
-                    ServersList.Add(mapServer);
-                }
+            }
+            catch (Exception ex)
+            {
+                new Action(async () => await ShowDialog("Error", ex.Message, "OK"))();
             }
         }
 
@@ -118,8 +124,10 @@ namespace SampRcon.ViewModels.SACNR
 
         private async Task AuthRconNavigate(Server server)
         {
+            var jsonServer = SerializeServer(server);
             ShellNavigationState state = Shell.Current.CurrentState;
-            await Shell.Current.GoToAsync($"{state.Location}/authenticationrconview?ipServer={server.IP}&portServer={server.Port}");
+
+            await Shell.Current.GoToAsync($"{state.Location}/authenticationrconview?currentServer={jsonServer}");
         }
     }
 }

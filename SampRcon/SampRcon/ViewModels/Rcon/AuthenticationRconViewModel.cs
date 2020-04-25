@@ -1,6 +1,5 @@
 ﻿using SampRcon.Resources;
 using SampRcon.Utils.SAMP;
-using SampRcon.ViewModels.Base;
 using System;
 using System.Linq;
 using System.Net;
@@ -11,52 +10,17 @@ using Xamarin.Forms;
 
 namespace SampRcon.ViewModels.Rcon
 {
-    [QueryProperty("IpServer", "ipServer")]
-    [QueryProperty("PortServer", "portServer")]
-    public class AuthenticationRconViewModel : BaseViewModel
+    public class AuthenticationRconViewModel : RconBaseViewModel
     {
-        private string _currentIpServer;
-        private string _currentPortServer;
-        private string _rconPassword;
         private string _errorAlertValue;
         private bool _errorAlertVisible;
 
-        public string IpServer
-        {
-            set => CurrentIpServer = Uri.UnescapeDataString(value);
-        }
-
-        public string PortServer
-        {
-            set => CurrentPortServer = Uri.UnescapeDataString(value);
-        }
-
-        public string CurrentIpServer
-        {
-            get => _currentIpServer;
-            set
-            {
-                _currentIpServer = value;
-                RaiseOnPropertyChanged();
-            }
-        }
-
-        public string CurrentPortServer
-        {
-            get => _currentPortServer;
-            set
-            {
-                _currentPortServer = value;
-                RaiseOnPropertyChanged();
-            }
-        }
-
         public string RconPassword
         {
-            get => _rconPassword;
+            get => Server.RconPassword;
             set
             {
-                _rconPassword = value;
+                Server.RconPassword = value;
                 RaiseOnPropertyChanged();
             }
         }
@@ -86,9 +50,9 @@ namespace SampRcon.ViewModels.Rcon
         private void ConnectServer()
         {
             var portInteger = 0;
-            if (Int32.TryParse(CurrentPortServer, out portInteger))
+            if (Int32.TryParse(Server.Port, out portInteger))
             {
-                var sQuery = new RCONQuery(CurrentIpServer, portInteger, RconPassword);
+                var sQuery = new RCONQuery(Server.IP, portInteger, Server.RconPassword);
                 var appVersion = AppInfo.VersionString;
                 var device = DeviceInfo.Model;
                 var manufacturer = DeviceInfo.Manufacturer;
@@ -101,7 +65,7 @@ namespace SampRcon.ViewModels.Rcon
                 var welcomeMessage = String.Format(resxMessage, GetLocalAddress(), deviceName, appVersion, platform, version, manufacturer, device);
                 var typeCommand = "echo";
                 sQuery.Send($"{typeCommand} {welcomeMessage}");
-                int count = sQuery.Receive();
+                var count = sQuery.Receive();
                 string[] info = sQuery.Store(count);
 
                 var serverResponse = info.FirstOrDefault();
@@ -119,8 +83,10 @@ namespace SampRcon.ViewModels.Rcon
 
         private async Task RconNavigate()
         {
+            var jsonServer = SerializeServer(Server);
             ShellNavigationState state = Shell.Current.CurrentState;
-            await Shell.Current.GoToAsync($"{state.Location}/rconview?ipServer={CurrentIpServer}&portServer={CurrentPortServer}&rconPassword={RconPassword}");
+
+            await Shell.Current.GoToAsync($"{state.Location}/rconview?currentServer={jsonServer}");
         }
 
         private string GetLocalAddress()

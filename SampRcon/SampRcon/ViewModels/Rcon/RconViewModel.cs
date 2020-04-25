@@ -1,6 +1,5 @@
 ﻿using SampRcon.Resources;
 using SampRcon.Utils.SAMP;
-using SampRcon.ViewModels.Base;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,61 +8,10 @@ using Xamarin.Forms;
 
 namespace SampRcon.ViewModels.Rcon
 {
-    [QueryProperty("IpServer", "ipServer")]
-    [QueryProperty("PortServer", "portServer")]
-    [QueryProperty("RconPassword", "rconPassword")]
-    public class RconViewModel : BaseViewModel
+    public class RconViewModel : RconBaseViewModel
     {
-        private string _currentIpServer;
-        private string _currentPortServer;
-        private string _currentRconPassword;
         private ObservableCollection<string> _logValue;
         private string _commandValue;
-
-        public string IpServer
-        {
-            set => CurrentIpServer = Uri.UnescapeDataString(value);
-        }
-
-        public string PortServer
-        {
-            set => CurrentPortServer = Uri.UnescapeDataString(value);
-        }
-
-        public string RconPassword
-        {
-            set => CurrentRconPassword = Uri.UnescapeDataString(value);
-        }
-
-        public string CurrentIpServer
-        {
-            get => _currentIpServer;
-            set
-            {
-                _currentIpServer = value;
-                RaiseOnPropertyChanged();
-            }
-        }
-
-        public string CurrentPortServer
-        {
-            get => _currentPortServer;
-            set
-            {
-                _currentPortServer = value;
-                RaiseOnPropertyChanged();
-            }
-        }
-
-        public string CurrentRconPassword
-        {
-            get => _currentRconPassword;
-            set
-            {
-                _currentRconPassword = value;
-                RaiseOnPropertyChanged();
-            }
-        }
 
         public ObservableCollection<string> LogValue
         {
@@ -104,15 +52,15 @@ namespace SampRcon.ViewModels.Rcon
         private void SendRcon()
         {
             var portInteger = 0;
-            if (Int32.TryParse(CurrentPortServer, out portInteger))
+            if (Int32.TryParse(Server.Port, out portInteger))
             {
-                var sQuery = new RCONQuery(CurrentIpServer, portInteger, CurrentRconPassword);
+                var sQuery = new RCONQuery(Server.IP, portInteger, Server.RconPassword);
                 sQuery.Send(CommandValue);
-                int count = sQuery.Receive();
+                var count = sQuery.Receive();
                 string[] info = sQuery.Store(count);
                 if (info.Any())
                 {
-                    foreach(var result in info)
+                    foreach (var result in info)
                     {
                         LogValue.Add($"{result}");
                     }

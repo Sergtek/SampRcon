@@ -18,6 +18,7 @@ namespace SampRcon.Models
         public string Players { get; set; }
         public string Version { get; set; }
         public string Password { get; set; }
+        public string RconPassword { get; set; }
         public string Time { get; set; }
         public string WebURL { get; set; }
         public string Rank { get; set; }
