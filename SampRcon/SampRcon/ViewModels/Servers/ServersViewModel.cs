@@ -16,7 +16,7 @@ namespace SampRcon.ViewModels.SACNR
     {
         private const string _serversMasterEndpoint = "https://monitor.sacnr.com/list/masterlist.txt";
         private const string _serverEndpoint = "https://monitor.sacnr.com/api/?IP=&Port=&Action=info&Format=JSON";
-        private HttpClient _client = new HttpClient() { MaxResponseContentBufferSize = 1000000 };
+        private HttpClient _client = new HttpClient { MaxResponseContentBufferSize = 1000000 };
         private HttpClient Client
         {
             get
@@ -132,7 +132,7 @@ namespace SampRcon.ViewModels.SACNR
 
         private async Task<string> ProcessURLAsync(string url, HttpClient client)
         {
-            var result = await Client.GetStringAsync(url);
+            var result = await client.GetStringAsync(url);
             return result;
         }
     }
