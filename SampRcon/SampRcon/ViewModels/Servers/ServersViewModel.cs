@@ -16,7 +16,7 @@ namespace SampRcon.ViewModels.SACNR
     {
         private const string _serversMasterEndpoint = "https://monitor.sacnr.com/list/masterlist.txt";
         private const string _serverEndpoint = "https://monitor.sacnr.com/api/?IP=&Port=&Action=info&Format=JSON";
-        private HttpClient _client;
+        private HttpClient _client = new HttpClient() { MaxResponseContentBufferSize = 1000000 };
         private HttpClient Client
         {
             get
@@ -73,7 +73,7 @@ namespace SampRcon.ViewModels.SACNR
         {
             try
             {
-                var result = await Client.GetStringAsync(_serversMasterEndpoint);
+                var result = await ProcessURLAsync(_serversMasterEndpoint, Client);
                 IpServers = new List<string>(result.Split('\n'));
                 var numberServers = IpServers.Count;
                 var localServersCount = ServersList.Count;
@@ -90,7 +90,7 @@ namespace SampRcon.ViewModels.SACNR
                     var serverPort = splitServer[1];
                     var serverEndpoint = _serverEndpoint;
                     serverEndpoint = serverEndpoint.Replace("IP=&Port=", $"IP={serverIp}&Port={serverPort}");
-                    var serverData = await Client.GetStringAsync(serverEndpoint);
+                    var serverData = await ProcessURLAsync(serverEndpoint, Client);
                     var currentServer = DeserializeServer(serverData);
                     var mapServer = currentServer.MapToModel();
 
@@ -128,6 +128,12 @@ namespace SampRcon.ViewModels.SACNR
             ShellNavigationState state = Shell.Current.CurrentState;
 
             await Shell.Current.GoToAsync($"{state.Location}/authenticationrconview?currentServer={jsonServer}");
+        }
+
+        private async Task<string> ProcessURLAsync(string url, HttpClient client)
+        {
+            var result = await Client.GetStringAsync(url);
+            return result;
         }
     }
 }
