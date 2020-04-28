@@ -2,7 +2,7 @@
 Features of the app:
 <ul>
   <li>Thanks to the <a href="https://monitor.sacnr.com/api.html" target="_blank">SACNR Monitor API</a>, the application displays a list of the servers that are online.</li>
-  <li>You can save / delete your favorite servers in a local database thanks to the use of <a href="https://github.com/praeclarum/sqlite-net" target="_blank">sqlite-net-pcl</a>.</li>
+  <li>You can save / delete your favorite servers in a local database thanks to the use of <a href="https://github.com/praeclarum/sqlite-net" target="_blank">sqlite-net</a>.</li>
 </ul>
 Here are some of the things you can do with the RCON commands:
 <ul>
