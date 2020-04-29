@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace SampRcon.ViewModels.Favorites
 {
-    public class FavoritesViewModel : BaseViewModel
+    public class FavoritesViewModel : ServerBaseViewModel
     {
         private ObservableCollection<Server> _favoritesServers;
         public ObservableCollection<Server> FavoritesServers
@@ -23,9 +23,15 @@ namespace SampRcon.ViewModels.Favorites
         }
 
         public ICommand RefreshCommand => new Command(async () => await GetAllServers());
+
         public ICommand DeleteServerCommand => new Command<Server>(async (server) => await DeleteServer(server));
+
         public ICommand NavigateCommand => new Command<string>(async (uri) => await NavigateTo(uri));
+
         public ICommand NavigateAuthRconCommand => new Command<Server>(async (server) => await AuthRconNavigate(server));
+
+        public ICommand NavigateInfoServerCommand => new Command<Server>(async (server) => await ServerInfoNavigate(server));
+
         public ICommand SaveServerCommand => new Command<Server>(async (server) => await SaveServer(server));
 
         public FavoritesViewModel()
@@ -68,6 +74,14 @@ namespace SampRcon.ViewModels.Favorites
             ShellNavigationState state = Shell.Current.CurrentState;
 
             await Shell.Current.GoToAsync($"{state.Location}/authenticationrconview?currentServer={jsonServer}");
+        }
+
+        private async Task ServerInfoNavigate(Server server)
+        {
+            var jsonServer = SerializeServer(server);
+            ShellNavigationState state = Shell.Current.CurrentState;
+
+            await Shell.Current.GoToAsync($"{state.Location}/serversInfoView?currentServer={jsonServer}");
         }
 
         private async Task SaveServer(Server server)

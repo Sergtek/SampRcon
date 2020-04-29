@@ -1,5 +1,6 @@
 ﻿using SampRcon.Resources;
 using SampRcon.Utils.SAMP;
+using SampRcon.ViewModels.Base;
 using System;
 using System.Linq;
 using System.Net;
@@ -10,7 +11,7 @@ using Xamarin.Forms;
 
 namespace SampRcon.ViewModels.Rcon
 {
-    public class AuthenticationRconViewModel : RconBaseViewModel
+    public class AuthenticationRconViewModel : ServerBaseViewModel
     {
         private string _errorAlertValue;
         private bool _errorAlertVisible;

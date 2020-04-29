@@ -151,6 +151,69 @@ namespace SampRcon.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gamemode.
+        /// </summary>
+        public static string ExpanderGamemode {
+            get {
+                return ResourceManager.GetString("ExpanderGamemode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hostname.
+        /// </summary>
+        public static string ExpanderHostname {
+            get {
+                return ResourceManager.GetString("ExpanderHostname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string ExpanderLanguage {
+            get {
+                return ResourceManager.GetString("ExpanderLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Map.
+        /// </summary>
+        public static string ExpanderMap {
+            get {
+                return ResourceManager.GetString("ExpanderMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time.
+        /// </summary>
+        public static string ExpanderTime {
+            get {
+                return ResourceManager.GetString("ExpanderTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        public static string ExpanderVersion {
+            get {
+                return ResourceManager.GetString("ExpanderVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Web.
+        /// </summary>
+        public static string ExpanderWebURL {
+            get {
+                return ResourceManager.GetString("ExpanderWebURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Favorites.
         /// </summary>
         public static string FavoritesViewTitle {

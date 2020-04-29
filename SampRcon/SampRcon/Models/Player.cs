@@ -2,9 +2,9 @@
 {
     public class Player
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
-        public int Score { get; set; }
-        public int Ping { get; set; }
+        public string Score { get; set; }
+        public string Ping { get; set; }
     }
 }

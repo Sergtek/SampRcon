@@ -12,7 +12,7 @@ using Xamarin.Forms;
 
 namespace SampRcon.ViewModels.SACNR
 {
-    public class ServersViewModel : BaseViewModel
+    public class ServersViewModel : ServerBaseViewModel
     {
         private const string _serversMasterEndpoint = "https://monitor.sacnr.com/list/masterlist.txt";
         private const string _serverEndpoint = "https://monitor.sacnr.com/api/?IP=&Port=&Action=info&Format=JSON";
@@ -52,7 +52,11 @@ namespace SampRcon.ViewModels.SACNR
         }
 
         public ICommand RefreshCommand => new Command(async () => await ExecuteRefreshCommand());
+
         public ICommand NavigateCommand => new Command<Server>(async (server) => await AuthRconNavigate(server));
+
+        public ICommand NavigateInfoServerCommand => new Command<Server>(async (server) => await ServerInfoNavigate(server));
+
         public ICommand SaveServerCommand => new Command<Server>(async (server) => await SaveServer(server));
 
 
@@ -128,6 +132,14 @@ namespace SampRcon.ViewModels.SACNR
             ShellNavigationState state = Shell.Current.CurrentState;
 
             await Shell.Current.GoToAsync($"{state.Location}/authenticationrconview?currentServer={jsonServer}");
+        }
+
+        private async Task ServerInfoNavigate(Server server)
+        {
+            var jsonServer = SerializeServer(server);
+            ShellNavigationState state = Shell.Current.CurrentState;
+
+            await Shell.Current.GoToAsync($"{state.Location}/serversInfoView?currentServer={jsonServer}");
         }
 
         private async Task<string> ProcessURLAsync(string url, HttpClient client)

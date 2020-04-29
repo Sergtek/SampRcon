@@ -1,5 +1,6 @@
 ﻿using SampRcon.Models;
 using SampRcon.ViewModels.Favorites;
+using System;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -54,6 +55,12 @@ namespace SampRcon.Views.Favorites
             var vm = (FavoritesViewModel)BindingContext;
             var server = vm.FavoritesServers.Where(x => x.IP == selectedIp).FirstOrDefault();
             return server;
+        }
+
+        private void SwipeItem_Invoked(object sender, EventArgs e)
+        {
+            var selectedServer = serversCollection.SelectedItem = (sender as SwipeView).BindingContext;
+            ((FavoritesViewModel)BindingContext).NavigateInfoServerCommand.Execute(selectedServer);
         }
 
         protected override void OnAppearing()

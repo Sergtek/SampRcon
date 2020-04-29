@@ -1,5 +1,6 @@
 ﻿using SampRcon.Models;
 using SampRcon.ViewModels.SACNR;
+using System;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -54,6 +55,12 @@ namespace SampRcon.Views.Servers
             var vm = (ServersViewModel)BindingContext;
             var server = vm.ServersList.Where(x => x.IP == selectedIp).FirstOrDefault();
             return server;
+        }
+
+        private void SwipeItem_Invoked(object sender, EventArgs e)
+        {
+            var selectedServer = serversCollection.SelectedItem = (sender as SwipeView).BindingContext;
+            ((ServersViewModel)BindingContext).NavigateInfoServerCommand.Execute(selectedServer);
         }
     }
 }

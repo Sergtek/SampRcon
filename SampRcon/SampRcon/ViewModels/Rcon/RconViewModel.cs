@@ -1,5 +1,6 @@
 ﻿using SampRcon.Resources;
 using SampRcon.Utils.SAMP;
+using SampRcon.ViewModels.Base;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -8,7 +9,7 @@ using Xamarin.Forms;
 
 namespace SampRcon.ViewModels.Rcon
 {
-    public class RconViewModel : RconBaseViewModel
+    public class RconViewModel : ServerBaseViewModel
     {
         private ObservableCollection<string> _logValue;
         private string _commandValue;

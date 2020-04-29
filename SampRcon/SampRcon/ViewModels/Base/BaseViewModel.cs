@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using SampRcon.Models;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -10,6 +8,7 @@ namespace SampRcon.ViewModels.Base
     public class BaseViewModel : INotifyPropertyChanged
     {
         private bool _isRefreshing;
+
         protected bool IsRefreshing
         {
             get => _isRefreshing;
@@ -23,18 +22,6 @@ namespace SampRcon.ViewModels.Base
         protected async Task ShowDialog(string title, string message, string confirmButton)
         {
             await Application.Current.MainPage.DisplayAlert(title, message, confirmButton);
-        }
-
-        protected string SerializeServer(Server server)
-        {
-            var jsonServer = JsonConvert.SerializeObject(server);
-            return jsonServer;
-        }
-
-        protected Server DeserializeServer(string jsonServer)
-        {
-            var server = JsonConvert.DeserializeObject<Server>(jsonServer);
-            return server;
         }
 
         #region INotifyPropertyChanged implementation

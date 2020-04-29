@@ -1660,6 +1660,7 @@ namespace SampRcon.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.Animation_AppCompat_DropDownUp = global::SampRcon.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Animation_AppCompat_Tooltip = global::SampRcon.Droid.Resource.Style.Animation_AppCompat_Tooltip;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Animation_Design_BottomSheetDialog = global::SampRcon.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.AppCompatDialogStyle = global::SampRcon.Droid.Resource.Style.AppCompatDialogStyle;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_AlertDialog_AppCompat = global::SampRcon.Droid.Resource.Style.Base_AlertDialog_AppCompat;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_AlertDialog_AppCompat_Light = global::SampRcon.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Animation_AppCompat_Dialog = global::SampRcon.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
@@ -1853,6 +1854,8 @@ namespace SampRcon.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.CardView_Dark = global::SampRcon.Droid.Resource.Style.CardView_Dark;
 			global::Xamarin.Forms.Material.Android.Resource.Style.CardView_Light = global::SampRcon.Droid.Resource.Style.CardView_Light;
 			global::Xamarin.Forms.Material.Android.Resource.Style.collectionViewStyle = global::SampRcon.Droid.Resource.Style.collectionViewStyle;
+			global::Xamarin.Forms.Material.Android.Resource.Style.MainTheme = global::SampRcon.Droid.Resource.Style.MainTheme;
+			global::Xamarin.Forms.Material.Android.Resource.Style.MainTheme_Base = global::SampRcon.Droid.Resource.Style.MainTheme_Base;
 			global::Xamarin.Forms.Material.Android.Resource.Style.NestedScrollBarStyle = global::SampRcon.Droid.Resource.Style.NestedScrollBarStyle;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Platform_AppCompat = global::SampRcon.Droid.Resource.Style.Platform_AppCompat;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Platform_AppCompat_Light = global::SampRcon.Droid.Resource.Style.Platform_AppCompat_Light;
@@ -4341,6 +4344,7 @@ namespace SampRcon.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Animation_AppCompat_DropDownUp = global::SampRcon.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Animation_AppCompat_Tooltip = global::SampRcon.Droid.Resource.Style.Animation_AppCompat_Tooltip;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Animation_Design_BottomSheetDialog = global::SampRcon.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.AppCompatDialogStyle = global::SampRcon.Droid.Resource.Style.AppCompatDialogStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_AlertDialog_AppCompat = global::SampRcon.Droid.Resource.Style.Base_AlertDialog_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_AlertDialog_AppCompat_Light = global::SampRcon.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Animation_AppCompat_Dialog = global::SampRcon.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
@@ -4534,6 +4538,8 @@ namespace SampRcon.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.CardView_Dark = global::SampRcon.Droid.Resource.Style.CardView_Dark;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.CardView_Light = global::SampRcon.Droid.Resource.Style.CardView_Light;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.collectionViewStyle = global::SampRcon.Droid.Resource.Style.collectionViewStyle;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.MainTheme = global::SampRcon.Droid.Resource.Style.MainTheme;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.MainTheme_Base = global::SampRcon.Droid.Resource.Style.MainTheme_Base;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.NestedScrollBarStyle = global::SampRcon.Droid.Resource.Style.NestedScrollBarStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Platform_AppCompat = global::SampRcon.Droid.Resource.Style.Platform_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Platform_AppCompat_Light = global::SampRcon.Droid.Resource.Style.Platform_AppCompat_Light;
@@ -7013,6 +7019,7 @@ namespace SampRcon.Droid
 			global::Xamarin.Forms.Platform.Resource.Style.Animation_AppCompat_DropDownUp = global::SampRcon.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
 			global::Xamarin.Forms.Platform.Resource.Style.Animation_AppCompat_Tooltip = global::SampRcon.Droid.Resource.Style.Animation_AppCompat_Tooltip;
 			global::Xamarin.Forms.Platform.Resource.Style.Animation_Design_BottomSheetDialog = global::SampRcon.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
+			global::Xamarin.Forms.Platform.Resource.Style.AppCompatDialogStyle = global::SampRcon.Droid.Resource.Style.AppCompatDialogStyle;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_AlertDialog_AppCompat = global::SampRcon.Droid.Resource.Style.Base_AlertDialog_AppCompat;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_AlertDialog_AppCompat_Light = global::SampRcon.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Animation_AppCompat_Dialog = global::SampRcon.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
@@ -7206,6 +7213,8 @@ namespace SampRcon.Droid
 			global::Xamarin.Forms.Platform.Resource.Style.CardView_Dark = global::SampRcon.Droid.Resource.Style.CardView_Dark;
 			global::Xamarin.Forms.Platform.Resource.Style.CardView_Light = global::SampRcon.Droid.Resource.Style.CardView_Light;
 			global::Xamarin.Forms.Platform.Resource.Style.collectionViewStyle = global::SampRcon.Droid.Resource.Style.collectionViewStyle;
+			global::Xamarin.Forms.Platform.Resource.Style.MainTheme = global::SampRcon.Droid.Resource.Style.MainTheme;
+			global::Xamarin.Forms.Platform.Resource.Style.MainTheme_Base = global::SampRcon.Droid.Resource.Style.MainTheme_Base;
 			global::Xamarin.Forms.Platform.Resource.Style.NestedScrollBarStyle = global::SampRcon.Droid.Resource.Style.NestedScrollBarStyle;
 			global::Xamarin.Forms.Platform.Resource.Style.Platform_AppCompat = global::SampRcon.Droid.Resource.Style.Platform_AppCompat;
 			global::Xamarin.Forms.Platform.Resource.Style.Platform_AppCompat_Light = global::SampRcon.Droid.Resource.Style.Platform_AppCompat_Light;
@@ -12787,8 +12796,8 @@ namespace SampRcon.Droid
 			// aapt resource value: 0x7f0b000c
 			public const int Animation_Design_BottomSheetDialog = 2131427340;
 			
-			// aapt resource value: 0x7f0b0205
-			public const int AppCompatDialogStyle = 2131427845;
+			// aapt resource value: 0x7f0b01fc
+			public const int AppCompatDialogStyle = 2131427836;
 			
 			// aapt resource value: 0x7f0b0126
 			public const int Base_AlertDialog_AppCompat = 2131427622;
@@ -13366,11 +13375,11 @@ namespace SampRcon.Droid
 			// aapt resource value: 0x7f0b01ef
 			public const int CardView_Light = 2131427823;
 			
-			// aapt resource value: 0x7f0b0203
-			public const int MainTheme = 2131427843;
+			// aapt resource value: 0x7f0b01fa
+			public const int MainTheme = 2131427834;
 			
-			// aapt resource value: 0x7f0b0204
-			public const int MainTheme_Base = 2131427844;
+			// aapt resource value: 0x7f0b01fb
+			public const int MainTheme_Base = 2131427835;
 			
 			// aapt resource value: 0x7f0b0206
 			public const int MainTheme_Splash = 2131427846;
@@ -14248,8 +14257,8 @@ namespace SampRcon.Droid
 			// aapt resource value: 0x7f0b0086
 			public const int Widget_MaterialComponents_ChipGroup = 2131427462;
 			
-			// aapt resource value: 0x7f0b0201
-			public const int Widget_MaterialComponents_CompoundButton_CheckBox = 2131427841;
+			// aapt resource value: 0x7f0b0204
+			public const int Widget_MaterialComponents_CompoundButton_CheckBox = 2131427844;
 			
 			// aapt resource value: 0x7f0b0087
 			public const int Widget_MaterialComponents_FloatingActionButton = 2131427463;
@@ -14299,29 +14308,29 @@ namespace SampRcon.Droid
 			// aapt resource value: 0x7f0b01f0
 			public const int Widget_Support_CoordinatorLayout = 2131427824;
 			
-			// aapt resource value: 0x7f0b01fe
-			public const int XamarinFormsMaterialButton = 2131427838;
-			
-			// aapt resource value: 0x7f0b01ff
-			public const int XamarinFormsMaterialButtonOutlined = 2131427839;
+			// aapt resource value: 0x7f0b0201
+			public const int XamarinFormsMaterialButton = 2131427841;
 			
 			// aapt resource value: 0x7f0b0202
-			public const int XamarinFormsMaterialCheckBox = 2131427842;
+			public const int XamarinFormsMaterialButtonOutlined = 2131427842;
+			
+			// aapt resource value: 0x7f0b0205
+			public const int XamarinFormsMaterialCheckBox = 2131427845;
+			
+			// aapt resource value: 0x7f0b0203
+			public const int XamarinFormsMaterialEntryFilled = 2131427843;
 			
 			// aapt resource value: 0x7f0b0200
-			public const int XamarinFormsMaterialEntryFilled = 2131427840;
+			public const int XamarinFormsMaterialProgressBarCircular = 2131427840;
+			
+			// aapt resource value: 0x7f0b01ff
+			public const int XamarinFormsMaterialProgressBarHorizontal = 2131427839;
+			
+			// aapt resource value: 0x7f0b01fe
+			public const int XamarinFormsMaterialSlider = 2131427838;
 			
 			// aapt resource value: 0x7f0b01fd
-			public const int XamarinFormsMaterialProgressBarCircular = 2131427837;
-			
-			// aapt resource value: 0x7f0b01fc
-			public const int XamarinFormsMaterialProgressBarHorizontal = 2131427836;
-			
-			// aapt resource value: 0x7f0b01fb
-			public const int XamarinFormsMaterialSlider = 2131427835;
-			
-			// aapt resource value: 0x7f0b01fa
-			public const int XamarinFormsMaterialTheme = 2131427834;
+			public const int XamarinFormsMaterialTheme = 2131427837;
 			
 			// aapt resource value: 0x7f0b01f8
 			public const int collectionViewStyle = 2131427832;

@@ -5,12 +5,14 @@
              Title="{x:Static resx:AppResources.ServersLabel}"
              x:Name="ServersView"
              xmlns:resx="clr-namespace:SampRcon.Resources"
-             xmlns:valueconverters="clr-namespace:SampRcon.ValueConverters"
+             xmlns:valueconverters="clr-namespace:SampRcon.ValueConverters" 
+             xmlns:hyperlink="clr-namespace:SampRcon.Controls.HyperlinkLabel"
              x:Class="SampRcon.Views.Servers.ServersViewPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <valueconverters:SacnrTotalServersConverter x:Key="SacnrTotalServersCount" />
             <valueconverters:TrimValueConverter x:Key="TrimValue" />
+            <valueconverters:UrlConverter x:Key="UrlConvert" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
@@ -25,64 +27,227 @@
                          Command="{Binding RefreshCommand}"
                          Margin="10,10,10,10">
                 <CollectionView x:Name="serversCollection"
-                                SelectionMode="Single"                                                   
+                                SelectionMode="None"  
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand"
                                 VerticalScrollBarVisibility="Always">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <SwipeView>
-                                <SwipeView.RightItems>
-                                    <SwipeItems>
-                                        <SwipeItem Invoked="RconSwipeItem_Invoked"
+                            <Expander ExpandAnimationEasing="{x:Static Easing.Linear}"
+                                CollapseAnimationEasing="{x:Static Easing.Linear}"
+                                IsExpanded="{Binding IsDetailVisible, Mode=TwoWay}">
+                                <Expander.Header>
+                                    <SwipeView>
+                                        <SwipeView.RightItems>
+                                            <SwipeItems>
+                                                <SwipeItem Invoked="RconSwipeItem_Invoked"
                                                    IconImageSource="rcon"
                                                    BackgroundColor="Transparent" />
-                                        <SwipeItem Invoked="SaveSwipeItem_Invoked"
+                                                <SwipeItem Invoked="SaveSwipeItem_Invoked"
                                                    IconImageSource="save"
                                                    BackgroundColor="Transparent" />
-                                    </SwipeItems>
-                                </SwipeView.RightItems>
-                                <Frame HasShadow="False"
+                                            </SwipeItems>
+                                        </SwipeView.RightItems>
+                                        <Frame HasShadow="False"
                                    BorderColor="#ECECEC"
                                    BackgroundColor="White"
                                    HorizontalOptions="FillAndExpand"
                                    VerticalOptions="FillAndExpand">
-                                    <Grid BackgroundColor="Transparent"
+                                            <Grid BackgroundColor="Transparent"
                                       HorizontalOptions="FillAndExpand"
                                       VerticalOptions="FillAndExpand">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
 
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Label 
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Label 
                                         Grid.Row="0"
                                         Text="{Binding Hostname, Converter={StaticResource TrimValue}}"
                                         FontSize="Medium"
                                         HorizontalOptions="Start"
                                         VerticalOptions="StartAndExpand"/>
-                                        <Label x:Name="serverIP"
+                                                <Label x:Name="serverIP"
                                                Grid.Row="1"
                                                FontSize="Medium"
                                                HorizontalOptions="Start"
                                                VerticalOptions="StartAndExpand">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding IP}" />
-                                                    <Span Text=":" />
-                                                    <Span Text="{Binding Port}"/>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label x:Name="ipServer" Text="{Binding IP}" IsVisible="False"/>
-                                    </Grid>
-                                </Frame>
-                            </SwipeView>
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding IP}" />
+                                                            <Span Text=":" />
+                                                            <Span Text="{Binding Port}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label x:Name="ipServer" Text="{Binding IP}" IsVisible="False"/>
+                                            </Grid>
+                                        </Frame>
+                                    </SwipeView>
+                                </Expander.Header>
+                                <Grid BackgroundColor="Transparent"
+                                      Margin="10,10,10,10"
+                                      HorizontalOptions="FillAndExpand"
+                                      VerticalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
 
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start"
+                                           TextColor="Black"
+                                           FontAttributes="Bold"
+                                           FontSize="Medium">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static resx:AppResources.ExpanderHostname}" />
+                                                <Span Text=":" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="1"
+                                           Text="{Binding Hostname}"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start"
+                                           TextColor="Black"
+                                           FontSize="Medium"/>
+                                    <Label Grid.Row="2"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start"
+                                           TextColor="Black"
+                                           FontAttributes="Bold"
+                                           FontSize="Medium">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static resx:AppResources.ExpanderGamemode}" />
+                                                <Span Text=":" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="3"
+                                           Text="{Binding Gamemode}"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start"
+                                           TextColor="Black"
+                                           FontSize="Medium"/>
+                                    <Label Grid.Row="4"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start"
+                                           TextColor="Black"
+                                           FontAttributes="Bold"
+                                           FontSize="Medium">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static resx:AppResources.ExpanderLanguage}" />
+                                                <Span Text=":" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="5"
+                                           Text="{Binding Language}"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start"
+                                           TextColor="Black"
+                                           FontSize="Medium"/>
+                                    <Label Grid.Row="6"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start"
+                                           TextColor="Black"
+                                           FontAttributes="Bold"
+                                           FontSize="Medium">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static resx:AppResources.ExpanderMap}" />
+                                                <Span Text=":" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="7"
+                                           Text="{Binding Map}"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start"
+                                           TextColor="Black"
+                                           FontSize="Medium"/>
+                                    <Label Grid.Row="8"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start"
+                                           TextColor="Black"
+                                           FontAttributes="Bold"
+                                           FontSize="Medium">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static resx:AppResources.ExpanderVersion}" />
+                                                <Span Text=":" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="9"
+                                           Text="{Binding Version}"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start"
+                                           TextColor="Black"
+                                           FontSize="Medium"/>
+                                    <Label Grid.Row="10"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start"
+                                           TextColor="Black"
+                                           FontAttributes="Bold"
+                                           FontSize="Medium">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static resx:AppResources.ExpanderTime}" />
+                                                <Span Text=":" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="11"
+                                           Text="{Binding Time}"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start"
+                                           TextColor="Black"
+                                           FontSize="Medium"/>
+                                    <Label Grid.Row="12"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start"
+                                           TextColor="Black"
+                                           FontAttributes="Bold"
+                                           FontSize="Medium">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static resx:AppResources.ExpanderWebURL}" />
+                                                <Span Text=":" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <hyperlink:HyperlinkLabel Grid.Row="13"
+                                        Text="{Binding WebURL, Converter={StaticResource UrlConvert}}" 
+                                        Url="{Binding WebURL, Converter={StaticResource UrlConvert}}" 
+                                        FontSize="Medium"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="StartAndExpand"/>
+                                </Grid>
+                            </Expander>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

@@ -31,6 +31,7 @@ namespace SampRcon.Views.MainShell
             routes.Add("authenticationrconview", typeof(AuthenticationRconViewPage));
             routes.Add("rconview", typeof(RconViewPage));
             routes.Add("creditsview", typeof(CreditsViewPage));
+            routes.Add("serversInfoView", typeof(ServersInfoViewPage));
 
             foreach (var item in routes)
             {

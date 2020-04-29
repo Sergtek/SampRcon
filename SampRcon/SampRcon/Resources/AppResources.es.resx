@@ -147,6 +147,27 @@
   <data name="DonateName" xml:space="preserve">
     <value>PayPal</value>
   </data>
+  <data name="ExpanderGamemode" xml:space="preserve">
+    <value>Modo de juego</value>
+  </data>
+  <data name="ExpanderHostname" xml:space="preserve">
+    <value>Nombre de host</value>
+  </data>
+  <data name="ExpanderLanguage" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="ExpanderMap" xml:space="preserve">
+    <value>Mapa</value>
+  </data>
+  <data name="ExpanderTime" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="ExpanderVersion" xml:space="preserve">
+    <value>Versión</value>
+  </data>
+  <data name="ExpanderWebURL" xml:space="preserve">
+    <value>Web</value>
+  </data>
   <data name="FavoritesViewTitle" xml:space="preserve">
     <value>Favoritos</value>
   </data>

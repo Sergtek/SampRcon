@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Server info"
+             x:Class="SampRcon.Views.Servers.ServersInfoViewPage">
+    <ContentPage.Content>
+        <StackLayout Margin="10,10,10,10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column ="0"
+                   HorizontalOptions="CenterAndExpand"
+                   Text="ID"
+                   FontAttributes="Bold"
+                   FontSize="Medium"/>
+                <Label Grid.Column ="1"
+                   HorizontalOptions="CenterAndExpand"
+                   Text="Name"
+                   FontAttributes="Bold"
+                   FontSize="Medium"/>
+                <Label Grid.Column ="2"
+                   HorizontalOptions="CenterAndExpand"                      
+                   Text="Score"
+                   FontAttributes="Bold"
+                   FontSize="Medium"/>
+                <Label Grid.Column ="3"
+                   HorizontalOptions="CenterAndExpand"                       
+                   Text="Ping"
+                   FontAttributes="Bold"                       
+                   FontSize="Medium"/>
+            </Grid>
+            <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                         Command="{Binding RefreshCommand}">
+                <CollectionView x:Name="playersCollection"
+                                ItemsSource="{Binding PlayersList}"
+                                SelectionMode="None"  
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                VerticalScrollBarVisibility="Always">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,0,0,10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column ="0"
+                                       HorizontalOptions="CenterAndExpand"
+                                       Text="{Binding Id}"
+                                       FontSize="Medium"/>
+                                <Label Grid.Column ="1"
+                                       HorizontalOptions="CenterAndExpand"                                       
+                                       Text="{Binding Name}"
+                                       FontSize="Medium"/>
+                                <Label Grid.Column ="2"
+                                       HorizontalOptions="CenterAndExpand"                                                                              
+                                       Text="{Binding Score}"
+                                       FontSize="Medium"/>
+                                <Label Grid.Column ="3"
+                                       HorizontalOptions="CenterAndExpand"                                                                              
+                                       Text="{Binding Ping}"
+                                       FontSize="Medium"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
