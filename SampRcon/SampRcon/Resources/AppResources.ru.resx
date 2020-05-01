@@ -225,15 +225,6 @@
   <data name="ToolBarAdd" xml:space="preserve">
     <value>Добавить</value>
   </data>
-  <data name="ToolBarGoDown" xml:space="preserve">
-    <value>Опускаться</value>
-  </data>
-  <data name="ToolBarGoUp" xml:space="preserve">
-    <value>Подниматься</value>
-  </data>
-  <data name="ToolBarRefresh" xml:space="preserve">
-    <value>обновление</value>
-  </data>
   <data name="WelcomeMessage" xml:space="preserve">
     <value>{0} ({1}) вошел в систему с SA-MP RCON {2}, используя {3} {4} ОС и устройство {5} {6}.</value>
   </data>

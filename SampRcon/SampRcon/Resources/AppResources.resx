@@ -225,15 +225,6 @@
   <data name="ToolBarAdd" xml:space="preserve">
     <value>Add</value>
   </data>
-  <data name="ToolBarGoDown" xml:space="preserve">
-    <value>Go down</value>
-  </data>
-  <data name="ToolBarGoUp" xml:space="preserve">
-    <value>Go up</value>
-  </data>
-  <data name="ToolBarRefresh" xml:space="preserve">
-    <value>Refresh</value>
-  </data>
   <data name="WelcomeMessage" xml:space="preserve">
     <value>{0} ({1}) logged in from SA-MP RCON {2} using {3} {4} OS and {5} {6} device.</value>
   </data>

@@ -24,17 +24,6 @@ namespace SampRcon.Views.Servers
             serversCollection.SetBinding(CollectionView.ItemsSourceProperty, nameof(vm.ServersList));
         }
 
-        private void GoTop_Clicked(object sender, System.EventArgs e)
-        {
-            serversCollection.ScrollTo(0);
-        }
-
-        private void GoDown_Clicked(object sender, System.EventArgs e)
-        {
-            var serversListCount = ((ServersViewModel)BindingContext).ServersList.Count;
-            serversCollection.ScrollTo(serversListCount);
-        }
-
         private void SaveSwipeItem_Invoked(object sender, System.EventArgs e)
         {
             var server = GetServerFromSwipeClick(((SwipeItem)sender).Parent);

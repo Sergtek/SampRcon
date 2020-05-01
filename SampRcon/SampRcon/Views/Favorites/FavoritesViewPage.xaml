@@ -12,9 +12,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="Add" Command="{Binding NavigateCommand}" CommandParameter="addserverView" Text="{x:Static resx:AppResources.ToolBarAdd}" Order="Secondary"/>
-        <ToolbarItem x:Name="GoTop" Clicked="GoTop_Clicked"  Text="{x:Static resx:AppResources.ToolBarGoUp}" Order="Secondary"/>
-        <ToolbarItem x:Name="GoDown" Clicked="GoDown_Clicked" Text="{x:Static resx:AppResources.ToolBarGoDown}" Order="Secondary"/>
+        <ToolbarItem x:Name="Add" Command="{Binding NavigateCommand}" CommandParameter="addserverView" Text="{x:Static resx:AppResources.ToolBarAdd}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand"

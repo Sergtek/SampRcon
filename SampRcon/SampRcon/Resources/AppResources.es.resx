@@ -225,15 +225,6 @@
   <data name="ToolBarAdd" xml:space="preserve">
     <value>Añadir</value>
   </data>
-  <data name="ToolBarGoDown" xml:space="preserve">
-    <value>Ir abajo</value>
-  </data>
-  <data name="ToolBarGoUp" xml:space="preserve">
-    <value>Ir arriba</value>
-  </data>
-  <data name="ToolBarRefresh" xml:space="preserve">
-    <value>Actualizar</value>
-  </data>
   <data name="WelcomeMessage" xml:space="preserve">
     <value>{0} ({1}) ha iniciado sesion desde SA-MP RCON {2} utilizando {3} {4} SO y el dispositivo {5} {6}.</value>
   </data>

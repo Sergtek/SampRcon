@@ -24,17 +24,6 @@ namespace SampRcon.Views.Favorites
             serversCollection.SetBinding(CollectionView.ItemsSourceProperty, nameof(vm.FavoritesServers));
         }
 
-        private void GoTop_Clicked(object sender, System.EventArgs e)
-        {
-            serversCollection.ScrollTo(0);
-        }
-
-        private void GoDown_Clicked(object sender, System.EventArgs e)
-        {
-            var serversListCount = ((FavoritesViewModel)BindingContext).FavoritesServers.Count;
-            serversCollection.ScrollTo(serversListCount);
-        }
-
         private void RconSwipeItem_Invoked(object sender, System.EventArgs e)
         {
             var server = GetServerFromSwipeClick(((SwipeItem)sender).Parent);

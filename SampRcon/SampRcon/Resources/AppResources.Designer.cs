@@ -385,33 +385,6 @@ namespace SampRcon.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Go down.
-        /// </summary>
-        public static string ToolBarGoDown {
-            get {
-                return ResourceManager.GetString("ToolBarGoDown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Go up.
-        /// </summary>
-        public static string ToolBarGoUp {
-            get {
-                return ResourceManager.GetString("ToolBarGoUp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Refresh.
-        /// </summary>
-        public static string ToolBarRefresh {
-            get {
-                return ResourceManager.GetString("ToolBarRefresh", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0} ({1}) logged in from SA-MP RCON {2} using {3} {4} OS and {5} {6} device..
         /// </summary>
         public static string WelcomeMessage {
