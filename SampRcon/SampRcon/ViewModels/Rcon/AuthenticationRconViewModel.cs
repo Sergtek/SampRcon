@@ -16,16 +16,6 @@ namespace SampRcon.ViewModels.Rcon
         private string _errorAlertValue;
         private bool _errorAlertVisible;
 
-        public string RconPassword
-        {
-            get => Server.RconPassword;
-            set
-            {
-                Server.RconPassword = value;
-                RaiseOnPropertyChanged();
-            }
-        }
-
         public string ErrorAlertValue
         {
             get => _errorAlertValue;
@@ -53,7 +43,7 @@ namespace SampRcon.ViewModels.Rcon
             var portInteger = 0;
             if (Int32.TryParse(Server.Port, out portInteger))
             {
-                var sQuery = new RCONQuery(Server.IP, portInteger, Server.RconPassword);
+                var sQuery = new RCONQuery(Server.IP, portInteger, RconPassword);
                 var appVersion = AppInfo.VersionString;
                 var device = DeviceInfo.Model;
                 var manufacturer = DeviceInfo.Manufacturer;
@@ -72,6 +62,7 @@ namespace SampRcon.ViewModels.Rcon
                 var serverResponse = info.FirstOrDefault();
                 if (!string.IsNullOrEmpty(serverResponse) && serverResponse != "Invalid RCON password.")
                 {
+                    new Action(async () => await CheckRememberPassword())();
                     new Action(async () => await RconNavigate())();
                 }
                 else
@@ -87,7 +78,7 @@ namespace SampRcon.ViewModels.Rcon
             var jsonServer = SerializeServer(Server);
             ShellNavigationState state = Shell.Current.CurrentState;
 
-            await Shell.Current.GoToAsync($"{state.Location}/rconview?currentServer={jsonServer}");
+            await Shell.Current.GoToAsync($"{state.Location}/rconview?currentServer={jsonServer}&currentRconPassword={RconPassword}");
         }
 
         private string GetLocalAddress()
@@ -98,6 +89,18 @@ namespace SampRcon.ViewModels.Rcon
                 return IpAddress.ToString();
 
             return AppResources.ResourceManager.GetString("IpNotLocateError");
+        }
+
+        private async Task CheckRememberPassword()
+        {
+            if (RememberRconPassword)
+            {
+                await SetRconPassword();
+            }
+            else
+            {
+                RemoveRconPassword(RconPasswordKey);
+            }
         }
     }
 }

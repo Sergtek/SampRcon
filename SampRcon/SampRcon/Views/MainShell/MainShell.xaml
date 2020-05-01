@@ -58,27 +58,21 @@
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
     
-    <FlyoutItem Route="servers" 
-                Title="{x:Static resx:AppResources.ServersLabel}"
+    <FlyoutItem Title="{x:Static resx:AppResources.ServersLabel}"
                 FlyoutDisplayOptions="AsSingleItem">
-        <ShellContent Route="" 
-                  Style="{StaticResource TabBackground}"
+        <ShellContent Style="{StaticResource TabBackground}"
                   ContentTemplate="{DataTemplate serversViews:ServersViewPage}" />
     </FlyoutItem>
 
-    <FlyoutItem Route="favorites" 
-                Title="{x:Static resx:AppResources.FavoritesViewTitle}"
+    <FlyoutItem Title="{x:Static resx:AppResources.FavoritesViewTitle}"
                 FlyoutDisplayOptions="AsSingleItem">
-        <ShellContent Route="" 
-                      Style="{StaticResource TabBackground}"
+        <ShellContent Style="{StaticResource TabBackground}"
                       ContentTemplate="{DataTemplate favoritesViews:FavoritesViewPage}" />
     </FlyoutItem>    
     
-    <FlyoutItem Route="credits" 
-                Title="{x:Static resx:AppResources.CreditsViewTitle}"
+    <FlyoutItem Title="{x:Static resx:AppResources.CreditsViewTitle}"
                 FlyoutDisplayOptions="AsSingleItem">
-        <ShellContent Route="" 
-                      Style="{StaticResource TabBackground}"
+        <ShellContent Style="{StaticResource TabBackground}"
                       ContentTemplate="{DataTemplate creditsViews:CreditsViewPage}" />
     </FlyoutItem>
 </Shell>

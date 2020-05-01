@@ -58,6 +58,7 @@ namespace SampRcon.ViewModels.Favorites
 
         private async Task DeleteServer(Server server)
         {
+            RemoveRconPassword($"{Server.ID}_rconPassword");
             await App.Database.DeleteItemAsync(server);
             FavoritesServers.Remove(server);
         }

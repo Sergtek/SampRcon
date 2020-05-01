@@ -6,84 +6,105 @@
              xmlns:resx="clr-namespace:SampRcon.Resources"
              x:Class="SampRcon.Views.Rcon.AuthenticationRconViewPage">
     <ContentPage.Content>
-        <Grid BackgroundColor="Transparent"
-              Margin="20,10,20,0"
-              HorizontalOptions="FillAndExpand"
-              VerticalOptions="FillAndExpand">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Label 
-                Grid.Row="0"
-                Text="{x:Static resx:AppResources.IpLabel}"
-                FontAttributes="Bold"                
-                FontSize="Medium"
-                HorizontalOptions="Start"
-                VerticalOptions="StartAndExpand"/>
-            <Entry 
-                Grid.Row="1"
-                Text="{Binding Server.IP}"
-                FontSize="Medium"
-                ClearButtonVisibility="WhileEditing"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="StartAndExpand"/>
-            <Label 
-                Grid.Row="2"
-                Text="{x:Static resx:AppResources.PortLabel}"
-                FontAttributes="Bold"
-                FontSize="Medium"
-                HorizontalOptions="Start"
-                VerticalOptions="StartAndExpand"/>
-            <Entry 
-                Grid.Row="3"
-                Text="{Binding Server.Port}"
-                FontSize="Medium"
-                ClearButtonVisibility="WhileEditing"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="StartAndExpand"/>
-            <Label 
-                Grid.Row="4"
-                Text="{x:Static resx:AppResources.RconPasswordLabel}"
-                FontAttributes="Bold"
-                FontSize="Medium"
-                HorizontalOptions="Start"
-                VerticalOptions="StartAndExpand"/>
-            <Entry 
-                Grid.Row="5"
-                Text="{Binding Server.RconPassword}"
-                IsPassword="True"
-                FontSize="Medium"
-                ClearButtonVisibility="WhileEditing"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="StartAndExpand"/>
-            <Button 
-                Grid.Row="6"
-                Text="{x:Static resx:AppResources.RconAuthenticationConnectButon}"
-                Command="{Binding ConnectServerCommand}"
-                BackgroundColor="#233346"
-                FontSize="Medium"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="StartAndExpand"/>
-            <Label 
-                Grid.Row="7"
-                Text="{Binding ErrorAlertValue}"
-                TextColor="Red"
-                IsVisible="{Binding ErrorAlertVisible}"
-                FontAttributes="Bold"
-                FontSize="Medium"
-                HorizontalOptions="Start"
-                VerticalOptions="StartAndExpand"/>
-        </Grid>
+        <ScrollView>
+            <Grid BackgroundColor="Transparent"
+                  Margin="20,10,20,0"
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label 
+                    Grid.Row="0"
+                    Text="{x:Static resx:AppResources.IpLabel}"
+                    FontAttributes="Bold"                
+                    FontSize="Medium"
+                    HorizontalOptions="Start"
+                    VerticalOptions="StartAndExpand"/>
+                <Entry 
+                    Grid.Row="1"
+                    Text="{Binding Server.IP}"
+                    FontSize="Medium"
+                    ClearButtonVisibility="WhileEditing"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="StartAndExpand"/>
+                <Label 
+                    Grid.Row="2"
+                    Text="{x:Static resx:AppResources.PortLabel}"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="Start"
+                    VerticalOptions="StartAndExpand"/>
+                <Entry 
+                    Grid.Row="3"
+                    Text="{Binding Server.Port}"
+                    FontSize="Medium"
+                    ClearButtonVisibility="WhileEditing"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="StartAndExpand"/>
+                <Label 
+                    Grid.Row="4"
+                    Text="{x:Static resx:AppResources.RconPasswordLabel}"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="Start"
+                    VerticalOptions="StartAndExpand"/>
+                <Entry 
+                    Grid.Row="5"
+                    Text="{Binding RconPassword}"
+                    IsPassword="True"
+                    FontSize="Medium"
+                    ClearButtonVisibility="WhileEditing"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="StartAndExpand"/>
+                <StackLayout Grid.Row="6"
+                             Orientation="Horizontal">
+                    <Label 
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static resx:AppResources.RememberRconPasswordLabel}" />
+                                <Span Text=":" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <CheckBox IsChecked="{Binding RememberRconPassword}"
+                              HorizontalOptions="Start"
+                              VerticalOptions="Start"/>
+                </StackLayout>
+                <Button 
+                    Grid.Row="7"
+                    Text="{x:Static resx:AppResources.RconAuthenticationConnectButon}"
+                    Command="{Binding ConnectServerCommand}"
+                    BackgroundColor="#233346"
+                    FontSize="Medium"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="StartAndExpand"/>
+                <Label 
+                    Grid.Row="8"
+                    Text="{Binding ErrorAlertValue}"
+                    TextColor="Red"
+                    IsVisible="{Binding ErrorAlertVisible}"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="Start"
+                    VerticalOptions="StartAndExpand"/>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

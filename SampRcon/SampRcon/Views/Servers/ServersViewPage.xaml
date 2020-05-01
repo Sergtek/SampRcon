@@ -41,9 +41,11 @@
                                         <SwipeView.RightItems>
                                             <SwipeItems>
                                                 <SwipeItem Invoked="RconSwipeItem_Invoked"
+                                                   Text="{x:Static resx:AppResources.SwipeRcon}"
                                                    IconImageSource="rcon"
                                                    BackgroundColor="Transparent" />
                                                 <SwipeItem Invoked="SaveSwipeItem_Invoked"
+                                                   Text="{x:Static resx:AppResources.SwipeSave}"                                                           
                                                    IconImageSource="save"
                                                    BackgroundColor="Transparent" />
                                             </SwipeItems>

@@ -19,7 +19,6 @@ namespace SampRcon.Mappers
                 Players = server.Players,
                 Version = server.Version,
                 Password = server.Password,
-                RconPassword = string.Empty,
                 Time = server.Time,
                 WebURL = server.WebURL,
                 Rank = server.Rank,

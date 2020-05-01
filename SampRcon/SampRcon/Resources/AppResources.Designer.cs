@@ -322,6 +322,15 @@ namespace SampRcon.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remember password.
+        /// </summary>
+        public static string RememberRconPasswordLabel {
+            get {
+                return ResourceManager.GetString("RememberRconPasswordLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SACNR:.
         /// </summary>
         public static string SacnrTotalServers {
@@ -336,6 +345,33 @@ namespace SampRcon.Resources {
         public static string ServersLabel {
             get {
                 return ResourceManager.GetString("ServersLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string SwipeDelete {
+            get {
+                return ResourceManager.GetString("SwipeDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RCON.
+        /// </summary>
+        public static string SwipeRcon {
+            get {
+                return ResourceManager.GetString("SwipeRcon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string SwipeSave {
+            get {
+                return ResourceManager.GetString("SwipeSave", resourceCulture);
             }
         }
         

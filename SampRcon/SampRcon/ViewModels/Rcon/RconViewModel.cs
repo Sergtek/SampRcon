@@ -9,10 +9,16 @@ using Xamarin.Forms;
 
 namespace SampRcon.ViewModels.Rcon
 {
+    [QueryProperty("CurrentRconPassword", "currentRconPassword")]
     public class RconViewModel : ServerBaseViewModel
     {
         private ObservableCollection<string> _logValue;
         private string _commandValue;
+
+        public string CurrentRconPassword
+        {
+            set => RconPassword = Uri.UnescapeDataString(value);
+        }
 
         public ObservableCollection<string> LogValue
         {
@@ -55,7 +61,7 @@ namespace SampRcon.ViewModels.Rcon
             var portInteger = 0;
             if (Int32.TryParse(Server.Port, out portInteger))
             {
-                var sQuery = new RCONQuery(Server.IP, portInteger, Server.RconPassword);
+                var sQuery = new RCONQuery(Server.IP, portInteger, RconPassword);
                 sQuery.Send(CommandValue);
                 var count = sQuery.Receive();
                 string[] info = sQuery.Store(count);

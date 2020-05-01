@@ -33,9 +33,11 @@
                                 <SwipeView.RightItems>
                                     <SwipeItems>
                                         <SwipeItem Invoked="DeleteSwipeItem_Invoked"
+                                                   Text="{x:Static resx:AppResources.SwipeDelete}"                                                                                                              
                                                    IconImageSource="remove"
                                                    BackgroundColor="Transparent" />
                                         <SwipeItem Invoked="RconSwipeItem_Invoked"
+                                                   Text="{x:Static resx:AppResources.SwipeRcon}"
                                                    IconImageSource="rcon"
                                                    BackgroundColor="Transparent" />
                                     </SwipeItems>

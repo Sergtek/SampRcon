@@ -204,11 +204,23 @@
   <data name="RconViewTitle" xml:space="preserve">
     <value>RCON Commands</value>
   </data>
+  <data name="RememberRconPasswordLabel" xml:space="preserve">
+    <value>Remember password</value>
+  </data>
   <data name="SacnrTotalServers" xml:space="preserve">
     <value>SACNR:</value>
   </data>
   <data name="ServersLabel" xml:space="preserve">
     <value>Servers</value>
+  </data>
+  <data name="SwipeDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="SwipeRcon" xml:space="preserve">
+    <value>RCON</value>
+  </data>
+  <data name="SwipeSave" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="ToolBarAdd" xml:space="preserve">
     <value>Add</value>

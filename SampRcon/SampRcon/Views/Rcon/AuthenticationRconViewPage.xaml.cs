@@ -20,5 +20,12 @@ namespace SampRcon.Views.Rcon
         {
 
         }
+
+        protected override void OnAppearing()
+        {
+            var vm = (AuthenticationRconViewModel)BindingContext;
+            vm.GetRconPasswordCommand.Execute(null);
+            base.OnAppearing();
+        }
     }
 }
