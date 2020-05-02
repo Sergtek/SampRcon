@@ -135,9 +135,6 @@
   <data name="CreditsQueryLabel" xml:space="preserve">
     <value>Query Mechanism:</value>
   </data>
-  <data name="CreditsResourceLabel" xml:space="preserve">
-    <value>Resources:</value>
-  </data>
   <data name="CreditsViewTitle" xml:space="preserve">
     <value>Credits</value>
   </data>

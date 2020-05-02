@@ -115,15 +115,6 @@ namespace SampRcon.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resources:.
-        /// </summary>
-        public static string CreditsResourceLabel {
-            get {
-                return ResourceManager.GetString("CreditsResourceLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Credits.
         /// </summary>
         public static string CreditsViewTitle {
