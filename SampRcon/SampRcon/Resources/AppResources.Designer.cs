@@ -133,7 +133,7 @@ namespace SampRcon.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you want the project to continue receiving updates you can make a donation here:.
+        ///   Looks up a localized string similar to Donate:.
         /// </summary>
         public static string DonateLabel {
             get {

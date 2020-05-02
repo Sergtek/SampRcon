@@ -142,7 +142,7 @@
     <value>кредиты</value>
   </data>
   <data name="DonateLabel" xml:space="preserve">
-    <value>Если вы хотите, чтобы проект продолжал получать обновления, вы можете сделать пожертвование здесь:</value>
+    <value>Пожертвуйте:</value>
   </data>
   <data name="DonateName" xml:space="preserve">
     <value>PayPal</value>

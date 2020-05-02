@@ -2,153 +2,102 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:hyperlink="clr-namespace:SampRcon.Controls.HyperlinkLabel"
-             Title="{x:Static resx:AppResources.CreditsViewTitle}"
              xmlns:resx="clr-namespace:SampRcon.Resources"
+             xmlns:valueconverters="clr-namespace:SampRcon.ValueConverters" 
+             Title="{x:Static resx:AppResources.CreditsViewTitle}"
              x:Class="SampRcon.Views.Credits.CreditsViewPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <valueconverters:IsNullOrEmptyConverter x:Key="IsNullOrEmpty" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView Orientation="Vertical" VerticalScrollBarVisibility="Always">
-            <Grid BackgroundColor="Transparent"
-              Margin="20,30,20,0"
-              RowSpacing="20"
-              HorizontalOptions="FillAndExpand"
-              VerticalOptions="FillAndExpand">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Label 
-                Grid.Row="0"
-                FontAttributes="Bold"
-                FontSize="Medium"
-                HorizontalOptions="Start"
-                VerticalOptions="StartAndExpand">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="{Binding AppName}" />
-                            <Span Text=" " />
-                            <Span Text="{Binding AppVersion}" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label 
-                Grid.Row="1"
-                Text="{x:Static resx:AppResources.DonateLabel}"
-                FontAttributes="Bold"
-                FontSize="Medium"
-                HorizontalOptions="Start"
-                VerticalOptions="StartAndExpand"/>
-                <hyperlink:HyperlinkLabel 
-                Grid.Row="2"
-                Text="{x:Static resx:AppResources.DonateName}"
-                Url="https://www.paypal.com/pools/c/8oehPDNLug"
-                FontAttributes="Bold"                
-                FontSize="Medium"
-                HorizontalOptions="Start"
-                VerticalOptions="StartAndExpand"/>
-                <Label 
-                Grid.Row="3"
-                Text="{x:Static resx:AppResources.CreditsOpenCodeLabel}"
-                FontAttributes="Bold"
-                FontSize="Medium"
-                HorizontalOptions="Start"
-                VerticalOptions="StartAndExpand"/>
-                <hyperlink:HyperlinkLabel 
-                Grid.Row="4"
-                Text="{x:Static resx:AppResources.CreditsOpenCodeSite}"
-                Url="https://github.com/nacompllo/SampRcon"
-                FontAttributes="Bold"                
-                FontSize="Medium"
-                HorizontalOptions="Start"
-                VerticalOptions="StartAndExpand"/>
-                <Label 
-                Grid.Row="5"
-                Text="{x:Static resx:AppResources.CreditsApisLabel}"
-                FontAttributes="Bold"
-                FontSize="Medium"
-                HorizontalOptions="Start"
-                VerticalOptions="StartAndExpand"/>
-                <hyperlink:HyperlinkLabel 
-                Grid.Row="6"
-                Text="SACNR Monitor"
-                Url="https://monitor.sacnr.com/api.html"
-                FontAttributes="Bold"                
-                FontSize="Medium"
-                HorizontalOptions="Start"
-                VerticalOptions="StartAndExpand"/>
-                <Label 
-                Grid.Row="7"
-                Text="{x:Static resx:AppResources.CreditsQueryLabel}"
-                FontAttributes="Bold"
-                FontSize="Medium"
-                HorizontalOptions="Start"
-                VerticalOptions="StartAndExpand"/>
-                <hyperlink:HyperlinkLabel 
-                Grid.Row="8"
-                Text="SA-MP Wiki"
-                Url="https://wiki.sa-mp.com/wiki/Query_Mechanism/Csharp"
-                FontAttributes="Bold"                
-                FontSize="Medium"
-                HorizontalOptions="Start"
-                VerticalOptions="StartAndExpand"/>
-                <Label 
-                Grid.Row="9"
-                Text="{x:Static resx:AppResources.CreditsResourceLabel}"
-                FontAttributes="Bold"
-                FontSize="Medium"
-                HorizontalOptions="Start"
-                VerticalOptions="StartAndExpand"/>
-                <hyperlink:HyperlinkLabel 
-                Grid.Row="10"
-                Text="bqlqn:"
-                Url="https://www.flaticon.com/authors/bqlqn"
-                FontAttributes="Bold"                
-                FontSize="Medium"
-                HorizontalOptions="Start"
-                VerticalOptions="StartAndExpand"/>
-                <Image 
-                Grid.Row="11"
-                HorizontalOptions="Start"                    
-                HeightRequest="50"
-                WidthRequest="50"
-                Source="save"/>
-                <hyperlink:HyperlinkLabel 
-                Grid.Row="12"
-                Text="Freepik:"
-                Url="https://www.flaticon.com/authors/freepik"
-                FontAttributes="Bold"                
-                FontSize="Medium"
-                HorizontalOptions="Start"
-                VerticalOptions="StartAndExpand"/>
-                <Image 
-                Grid.Row="13"
-                HorizontalOptions="Start"                    
-                HeightRequest="50"
-                WidthRequest="50"
-                Source="remove"/>
-                <Image 
-                Grid.Row="14"      
-                Margin="0,0,0,10"
-                HorizontalOptions="Start"       
-                HeightRequest="50"
-                WidthRequest="50"
-                Source="rcon"/>
-            </Grid>
+            <StackLayout>
+                <StackLayout Margin="20,20,20,0">
+                    <Label 
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="StartAndExpand">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding AppName}" />
+                                <Span Text=" " />
+                                <Span Text="{Binding AppVersion}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+
+                <StackLayout
+                    Orientation="Vertical"
+                    Margin="0,20,0,20"
+                    BindableLayout.ItemsSource="{Binding CreditsItems}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Grid RowSpacing="20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Text="{Binding Title}"
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="StartAndExpand">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label"
+                                             Binding="{Binding Title, Converter={StaticResource IsNullOrEmpty}}"
+                                             Value="False">
+                                                <Setter Property="IsVisible" Value="False" />
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
+                                    <hyperlink:HyperlinkLabel 
+                                        Grid.Row="1"
+                                        Text="{Binding LinkValue}"
+                                        Url="{Binding Url}"
+                                        FontAttributes="Bold"                
+                                        FontSize="Medium"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="StartAndExpand">
+                                        <hyperlink:HyperlinkLabel.Triggers>
+                                            <DataTrigger TargetType="Label"
+                                             Binding="{Binding LinkValue, Converter={StaticResource IsNullOrEmpty}}"
+                                             Value="False">
+                                                <Setter Property="IsVisible" Value="False" />
+                                            </DataTrigger>
+                                        </hyperlink:HyperlinkLabel.Triggers>
+                                    </hyperlink:HyperlinkLabel>
+                                    <Image
+                                        Grid.Row="2"
+                                        Source="{Binding Icon}"
+                                        HorizontalOptions="CenterAndExpand"                    
+                                        HeightRequest="50"
+                                        WidthRequest="50">
+                                        <Image.Triggers>
+                                            <DataTrigger TargetType="Image"
+                                             Binding="{Binding Icon, Converter={StaticResource IsNullOrEmpty}}"
+                                             Value="False">
+                                                <Setter Property="IsVisible" Value="False" />
+                                            </DataTrigger>
+                                        </Image.Triggers>
+                                    </Image>
+                                </Grid>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
+    

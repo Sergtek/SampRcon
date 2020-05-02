@@ -142,7 +142,7 @@
     <value>Credits</value>
   </data>
   <data name="DonateLabel" xml:space="preserve">
-    <value>If you want the project to continue receiving updates you can make a donation here:</value>
+    <value>Donate:</value>
   </data>
   <data name="DonateName" xml:space="preserve">
     <value>PayPal</value>
