@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients"       
+             xmlns:resx="clr-namespace:SampRcon.Resources"             
+             Title="{x:Static resx:AppResources.RconHomeViewTitle}"
+             x:Class="SampRcon.Views.Rcon.RconHome.RconHomeViewPage">
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <magic:GradientView VerticalOptions="FillAndExpand" >
+                    <magic:GradientView.GradientSource>
+                        <magic:CssGradientSource>
+                            <x:String>
+                                <![CDATA[
+                                    linear-gradient(45deg, rgb(149, 10, 155) 0%, rgb(149, 10, 155) 9%,rgb(120, 16, 136) 9%, rgb(120, 16, 136) 13%,rgb(178, 3, 174) 13%, rgb(178, 3, 174) 32%,rgb(91, 23, 117) 32%, rgb(91, 23, 117) 42%,rgb(32, 36, 79) 42%, rgb(32, 36, 79) 46%,rgb(61, 30, 98) 46%, rgb(61, 30, 98) 70%,rgb(3, 43, 60) 70%, rgb(3, 43, 60) 100%)
+                                ]]>
+                            </x:String>
+                        </magic:CssGradientSource>
+                    </magic:GradientView.GradientSource>
+                </magic:GradientView>
+                <StackLayout
+                        Orientation="Vertical"
+                        Margin="0,20,0,0"
+                        BindableLayout.ItemsSource="{Binding RconOptions}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                </StackLayout.GestureRecognizers>
+                                <Frame Margin="30,0,30,20"
+                                  HasShadow="False"
+                                  BorderColor="#ECECEC"
+                                  BackgroundColor="White"
+                                  HorizontalOptions="FillAndExpand"
+                                  VerticalOptions="Start">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Image 
+                                        Grid.Column="0"
+                                        Source="{Binding Icon}"
+                                        Aspect="AspectFit"
+                                        HeightRequest="50"
+                                        WidthRequest="50"/>
+                                        <Label Text="{Binding Title}"
+                                            Grid.Column="1"
+                                            VerticalOptions="CenterAndExpand"/>
+                                        <Label x:Name="itemId" 
+                                               Text="{Binding Id}"
+                                               IsVisible="False"/>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

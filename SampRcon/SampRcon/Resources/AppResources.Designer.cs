@@ -250,6 +250,51 @@ namespace SampRcon.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ID.
+        /// </summary>
+        public static string PlayerIDLabel {
+            get {
+                return ResourceManager.GetString("PlayerIDLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Players.
+        /// </summary>
+        public static string PlayerLabel {
+            get {
+                return ResourceManager.GetString("PlayerLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string PlayerNameLabel {
+            get {
+                return ResourceManager.GetString("PlayerNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ping.
+        /// </summary>
+        public static string PlayerPingLabel {
+            get {
+                return ResourceManager.GetString("PlayerPingLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Score.
+        /// </summary>
+        public static string PlayerScoreLabel {
+            get {
+                return ResourceManager.GetString("PlayerScoreLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Port:.
         /// </summary>
         public static string PortLabel {
@@ -259,29 +304,47 @@ namespace SampRcon.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to RCON commands.
+        /// </summary>
+        public static string RconHomeCommandTitle {
+            get {
+                return ResourceManager.GetString("RconHomeCommandTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string RconHomeViewTitle {
+            get {
+                return ResourceManager.GetString("RconHomeViewTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Connect server.
         /// </summary>
-        public static string RconAuthenticationConnectButon {
+        public static string RconLoginConnectButon {
             get {
-                return ResourceManager.GetString("RconAuthenticationConnectButon", resourceCulture);
+                return ResourceManager.GetString("RconLoginConnectButon", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Invalid RCON password..
         /// </summary>
-        public static string RconAuthenticationErrorAlert {
+        public static string RconLoginErrorAlert {
             get {
-                return ResourceManager.GetString("RconAuthenticationErrorAlert", resourceCulture);
+                return ResourceManager.GetString("RconLoginErrorAlert", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RCON Authentication.
+        ///   Looks up a localized string similar to Login.
         /// </summary>
-        public static string RconAuthenticationViewTitle {
+        public static string RconLoginViewTitle {
             get {
-                return ResourceManager.GetString("RconAuthenticationViewTitle", resourceCulture);
+                return ResourceManager.GetString("RconLoginViewTitle", resourceCulture);
             }
         }
         

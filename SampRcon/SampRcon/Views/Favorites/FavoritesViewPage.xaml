@@ -12,7 +12,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="Add" Command="{Binding NavigateCommand}" CommandParameter="addserverView" Text="{x:Static resx:AppResources.ToolBarAdd}"/>
+        <ToolbarItem x:Name="Add" Command="{Binding NavigateCommand}" CommandParameter="newServerView" Text="{x:Static resx:AppResources.ToolBarAdd}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand"

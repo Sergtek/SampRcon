@@ -1,14 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Shell
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    xmlns:serversViews="clr-namespace:SampRcon.Views.Servers" 
-    xmlns:favoritesViews="clr-namespace:SampRcon.Views.Favorites" 
-    xmlns:creditsViews="clr-namespace:SampRcon.Views.Credits" 
-    xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients"
-    xmlns:resx="clr-namespace:SampRcon.Resources"
-    Visual="Material"
-    x:Class="SampRcon.Views.MainShell.MainShell">
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:serversViews="clr-namespace:SampRcon.Views.Servers" 
+             xmlns:favoritesViews="clr-namespace:SampRcon.Views.Favorites" 
+             xmlns:creditsViews="clr-namespace:SampRcon.Views.Credits" 
+             xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients"
+             xmlns:resx="clr-namespace:SampRcon.Resources"
+             x:Class="SampRcon.AppShell">
     <Shell.Resources>
         <Style x:Key="BaseStyle" 
                TargetType="Element">
@@ -57,22 +55,24 @@
             </Grid>
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
-    
-    <FlyoutItem Title="{x:Static resx:AppResources.ServersLabel}"
-                FlyoutDisplayOptions="AsSingleItem">
-        <ShellContent Style="{StaticResource TabBackground}"
-                  ContentTemplate="{DataTemplate serversViews:ServersViewPage}" />
-    </FlyoutItem>
 
-    <FlyoutItem Title="{x:Static resx:AppResources.FavoritesViewTitle}"
-                FlyoutDisplayOptions="AsSingleItem">
-        <ShellContent Style="{StaticResource TabBackground}"
+
+    <FlyoutItem Route="samp"
+                FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Route="servers"
+                      Style="{StaticResource TabBackground}"
+                      Title="{x:Static resx:AppResources.ServersLabel}"
+                      Icon="serversIcon"
+                      ContentTemplate="{DataTemplate serversViews:ServersViewPage}" />
+        <ShellContent Route="favorites"
+                      Style="{StaticResource TabBackground}"
+                      Title="{x:Static resx:AppResources.FavoritesViewTitle}"
+                      Icon="favoritesIcon"
                       ContentTemplate="{DataTemplate favoritesViews:FavoritesViewPage}" />
-    </FlyoutItem>    
-    
-    <FlyoutItem Title="{x:Static resx:AppResources.CreditsViewTitle}"
-                FlyoutDisplayOptions="AsSingleItem">
-        <ShellContent Style="{StaticResource TabBackground}"
+        <ShellContent Route="credits"
+                      Style="{StaticResource TabBackground}"
+                      Title="{x:Static resx:AppResources.CreditsViewTitle}"
+                      Icon="creditsIcon"
                       ContentTemplate="{DataTemplate creditsViews:CreditsViewPage}" />
     </FlyoutItem>
 </Shell>

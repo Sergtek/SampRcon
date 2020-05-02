@@ -30,6 +30,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="AppShell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\AppResources.es.resx">
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
@@ -49,16 +52,16 @@
     <EmbeddedResource Update="Views\Favorites\FavoritesViewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MainShell\MainShell.xaml">
+    <EmbeddedResource Update="Views\Rcon\RconCommands\RconCommandsViewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Rcon\AuthenticationRconViewPage.xaml">
+    <EmbeddedResource Update="Views\Rcon\RconHome\RconHomeViewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Rcon\RconViewPage.xaml">
+    <EmbeddedResource Update="Views\Rcon\RconLogin\RconLoginViewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Servers\ServersInfoViewPage.xaml">
+    <EmbeddedResource Update="Views\Rcon\RconPlayers\RconPlayersViewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Servers\ServersViewPage">

@@ -1,5 +1,4 @@
 ﻿using SampRcon.Utils.SQL;
-using SampRcon.Views.MainShell;
 using Xamarin.Forms;
 
 namespace SampRcon
@@ -12,7 +11,7 @@ namespace SampRcon
         {
             InitializeComponent();
 
-            MainPage = new MainShell();
+            MainPage = new AppShell();
         }
 
         public static ItemDatabase Database

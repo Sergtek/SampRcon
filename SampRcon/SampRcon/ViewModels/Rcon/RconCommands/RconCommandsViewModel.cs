@@ -7,18 +7,13 @@ using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace SampRcon.ViewModels.Rcon
+
+namespace SampRcon.ViewModels.Rcon.RconCommands
 {
-    [QueryProperty("CurrentRconPassword", "currentRconPassword")]
-    public class RconViewModel : ServerBaseViewModel
+    public class RconCommandsViewModel : ServerBaseViewModel
     {
         private ObservableCollection<string> _logValue;
         private string _commandValue;
-
-        public string CurrentRconPassword
-        {
-            set => RconPassword = Uri.UnescapeDataString(value);
-        }
 
         public ObservableCollection<string> LogValue
         {
@@ -80,7 +75,7 @@ namespace SampRcon.ViewModels.Rcon
             }
         }
 
-        public RconViewModel()
+        public RconCommandsViewModel()
         {
             LogValue = new ObservableCollection<string> { AppResources.ResourceManager.GetString("RconSuccessfulConnectionMessage") };
         }

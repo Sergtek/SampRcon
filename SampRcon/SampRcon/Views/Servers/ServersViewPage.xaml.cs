@@ -45,11 +45,5 @@ namespace SampRcon.Views.Servers
             var server = vm.ServersList.Where(x => x.IP == selectedIp).FirstOrDefault();
             return server;
         }
-
-        private void SwipeItem_Invoked(object sender, EventArgs e)
-        {
-            var selectedServer = serversCollection.SelectedItem = (sender as SwipeView).BindingContext;
-            ((ServersViewModel)BindingContext).NavigateInfoServerCommand.Execute(selectedServer);
-        }
     }
 }

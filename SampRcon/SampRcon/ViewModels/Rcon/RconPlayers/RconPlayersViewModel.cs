@@ -7,9 +7,9 @@ using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace SampRcon.ViewModels.Servers
+namespace SampRcon.ViewModels.Rcon.RconPlayers
 {
-    public class ServersInfoViewModel : ServerBaseViewModel
+    public class RconPlayersViewModel : ServerBaseViewModel
     {
         private ObservableCollection<Player> _playersList = new ObservableCollection<Player>();
         public ObservableCollection<Player> PlayersList

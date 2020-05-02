@@ -30,8 +30,6 @@ namespace SampRcon.ViewModels.Favorites
 
         public ICommand NavigateAuthRconCommand => new Command<Server>(async (server) => await AuthRconNavigate(server));
 
-        public ICommand NavigateInfoServerCommand => new Command<Server>(async (server) => await ServerInfoNavigate(server));
-
         public ICommand SaveServerCommand => new Command<Server>(async (server) => await SaveServer(server));
 
         public FavoritesViewModel()
@@ -65,24 +63,14 @@ namespace SampRcon.ViewModels.Favorites
 
         private async Task NavigateTo(string uri)
         {
-            ShellNavigationState state = Shell.Current.CurrentState;
-            await Shell.Current.GoToAsync($"{state.Location}/{uri}");
+            await Shell.Current.GoToAsync($"{uri}");
         }
 
         private async Task AuthRconNavigate(Server server)
         {
             var jsonServer = SerializeServer(server);
-            ShellNavigationState state = Shell.Current.CurrentState;
 
-            await Shell.Current.GoToAsync($"{state.Location}/authenticationrconview?currentServer={jsonServer}");
-        }
-
-        private async Task ServerInfoNavigate(Server server)
-        {
-            var jsonServer = SerializeServer(server);
-            ShellNavigationState state = Shell.Current.CurrentState;
-
-            await Shell.Current.GoToAsync($"{state.Location}/serversInfoView?currentServer={jsonServer}");
+            await Shell.Current.GoToAsync($"rconLogin?currentServer={jsonServer}");
         }
 
         private async Task SaveServer(Server server)

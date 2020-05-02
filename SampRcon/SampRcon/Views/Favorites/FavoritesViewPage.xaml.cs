@@ -46,12 +46,6 @@ namespace SampRcon.Views.Favorites
             return server;
         }
 
-        private void SwipeItem_Invoked(object sender, EventArgs e)
-        {
-            var selectedServer = serversCollection.SelectedItem = (sender as SwipeView).BindingContext;
-            ((FavoritesViewModel)BindingContext).NavigateInfoServerCommand.Execute(selectedServer);
-        }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();

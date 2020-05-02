@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients" 
-             Title="{x:Static resx:AppResources.RconViewTitle}"
-             BackgroundColor="#F8F8F8"
              xmlns:resx="clr-namespace:SampRcon.Resources"
-             x:Class="SampRcon.Views.Rcon.RconViewPage">
+             BackgroundColor="#F8F8F8"
+             Title="{x:Static resx:AppResources.RconViewTitle}"
+             x:Class="SampRcon.Views.Rcon.RconCommands.RconCommandsViewPage">
     <ContentPage.Content>
         <Grid BackgroundColor="Transparent"    
               RowSpacing="0"
@@ -74,7 +74,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Frame Grid.Column="0" Grid.Row="1" BorderColor="#D6D4D4" HasShadow="False" Padding="1">
-                    <Entry 
+                        <Entry 
                     Margin="5,5,5,5"
                     Text="{Binding CommandValue}"
                     VerticalTextAlignment="Center"

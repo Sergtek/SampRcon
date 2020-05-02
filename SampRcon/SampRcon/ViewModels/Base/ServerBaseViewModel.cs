@@ -9,12 +9,18 @@ using Xamarin.Forms;
 namespace SampRcon.ViewModels.Base
 {
     [QueryProperty("CurrentServer", "currentServer")]
+    [QueryProperty("CurrentRconPassword", "currentRconPassword")]
     public class ServerBaseViewModel : BaseViewModel
     {
         private Server _server = new Server();
         private string _rconPasswordKey;
         private string _rconPassword;
         private bool _rememberRconPassword;
+
+        public string CurrentRconPassword
+        {
+            set => RconPassword = Uri.UnescapeDataString(value);
+        }
 
         public string CurrentServer
         {

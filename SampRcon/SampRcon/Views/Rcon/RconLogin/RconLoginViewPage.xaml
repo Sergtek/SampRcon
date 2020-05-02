@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             BackgroundColor="#F8F8F8"
-             Title="{x:Static resx:AppResources.RconAuthenticationViewTitle}"
              xmlns:resx="clr-namespace:SampRcon.Resources"
-             x:Class="SampRcon.Views.Rcon.AuthenticationRconViewPage">
+             BackgroundColor="#F8F8F8"
+             Title="{x:Static resx:AppResources.RconLoginViewTitle}"
+             x:Class="SampRcon.Views.Rcon.RconLogin.RconLoginViewPage">
     <ContentPage.Content>
         <ScrollView>
             <Grid BackgroundColor="Transparent"
@@ -89,9 +89,10 @@
                 </StackLayout>
                 <Button 
                     Grid.Row="7"
-                    Text="{x:Static resx:AppResources.RconAuthenticationConnectButon}"
+                    Text="{x:Static resx:AppResources.RconLoginConnectButon}"
                     Command="{Binding ConnectServerCommand}"
                     BackgroundColor="#233346"
+                    TextColor="White"
                     FontSize="Medium"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="StartAndExpand"/>

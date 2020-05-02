@@ -180,17 +180,38 @@
   <data name="IpNotLocateError" xml:space="preserve">
     <value>Не удалось найти IP-адрес</value>
   </data>
+  <data name="PlayerIDLabel" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="PlayerLabel" xml:space="preserve">
+    <value>игроки</value>
+  </data>
+  <data name="PlayerNameLabel" xml:space="preserve">
+    <value>имя</value>
+  </data>
+  <data name="PlayerPingLabel" xml:space="preserve">
+    <value>Ping</value>
+  </data>
+  <data name="PlayerScoreLabel" xml:space="preserve">
+    <value>Гол</value>
+  </data>
   <data name="PortLabel" xml:space="preserve">
     <value>Порт:</value>
   </data>
-  <data name="RconAuthenticationConnectButon" xml:space="preserve">
+  <data name="RconHomeCommandTitle" xml:space="preserve">
+    <value>Команды RCON</value>
+  </data>
+  <data name="RconHomeViewTitle" xml:space="preserve">
+    <value>Главная страница</value>
+  </data>
+  <data name="RconLoginConnectButon" xml:space="preserve">
     <value>Подключите сервер</value>
   </data>
-  <data name="RconAuthenticationErrorAlert" xml:space="preserve">
+  <data name="RconLoginErrorAlert" xml:space="preserve">
     <value>Неверный пароль RCON.</value>
   </data>
-  <data name="RconAuthenticationViewTitle" xml:space="preserve">
-    <value>Аутентификация RCON</value>
+  <data name="RconLoginViewTitle" xml:space="preserve">
+    <value>Авторизоваться</value>
   </data>
   <data name="RconPasswordLabel" xml:space="preserve">
     <value>RCON пароль:</value>

@@ -9,9 +9,9 @@ using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace SampRcon.ViewModels.Rcon
+namespace SampRcon.ViewModels.Rcon.RconLogin
 {
-    public class AuthenticationRconViewModel : ServerBaseViewModel
+    public class RconLoginViewModel : ServerBaseViewModel
     {
         private string _errorAlertValue;
         private bool _errorAlertVisible;
@@ -67,7 +67,7 @@ namespace SampRcon.ViewModels.Rcon
                 }
                 else
                 {
-                    ErrorAlertValue = AppResources.ResourceManager.GetString("RconAuthenticationErrorAlert");
+                    ErrorAlertValue = AppResources.ResourceManager.GetString("RconLoginErrorAlert");
                     ErrorAlertVisible = true;
                 }
             }
@@ -76,9 +76,8 @@ namespace SampRcon.ViewModels.Rcon
         private async Task RconNavigate()
         {
             var jsonServer = SerializeServer(Server);
-            ShellNavigationState state = Shell.Current.CurrentState;
 
-            await Shell.Current.GoToAsync($"{state.Location}/rconview?currentServer={jsonServer}&currentRconPassword={RconPassword}");
+            await Shell.Current.GoToAsync($"rconHome?currentServer={jsonServer}&currentRconPassword={RconPassword}");
         }
 
         private string GetLocalAddress()

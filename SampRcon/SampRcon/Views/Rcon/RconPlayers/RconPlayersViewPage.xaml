@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="Server info"
-             x:Class="SampRcon.Views.Servers.ServersInfoViewPage">
+             xmlns:resx="clr-namespace:SampRcon.Resources"             
+             Title="{x:Static resx:AppResources.PlayerLabel}"
+             x:Class="SampRcon.Views.Rcon.RconPlayers.RconPlayersViewPage">
     <ContentPage.Content>
         <StackLayout Margin="10,10,10,10">
             <Grid>
@@ -17,22 +18,22 @@
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column ="0"
                    HorizontalOptions="CenterAndExpand"
-                   Text="ID"
+                   Text="{x:Static resx:AppResources.PlayerIDLabel}"
                    FontAttributes="Bold"
                    FontSize="Medium"/>
                 <Label Grid.Column ="1"
                    HorizontalOptions="CenterAndExpand"
-                   Text="Name"
+                   Text="{x:Static resx:AppResources.PlayerNameLabel}"
                    FontAttributes="Bold"
                    FontSize="Medium"/>
                 <Label Grid.Column ="2"
                    HorizontalOptions="CenterAndExpand"                      
-                   Text="Score"
+                   Text="{x:Static resx:AppResources.PlayerScoreLabel}"
                    FontAttributes="Bold"
                    FontSize="Medium"/>
                 <Label Grid.Column ="3"
                    HorizontalOptions="CenterAndExpand"                       
-                   Text="Ping"
+                   Text="{x:Static resx:AppResources.PlayerPingLabel}"
                    FontAttributes="Bold"                       
                    FontSize="Medium"/>
             </Grid>

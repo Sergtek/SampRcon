@@ -54,6 +54,7 @@
                 Text="{x:Static resx:AppResources.AddServerLabel}"
                 Command="{Binding SaveServerCommand}"
                 BackgroundColor="#233346"
+                TextColor="White"                
                 FontSize="Medium"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="StartAndExpand"/>

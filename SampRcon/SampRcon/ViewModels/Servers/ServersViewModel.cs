@@ -55,8 +55,6 @@ namespace SampRcon.ViewModels.SACNR
 
         public ICommand NavigateCommand => new Command<Server>(async (server) => await AuthRconNavigate(server));
 
-        public ICommand NavigateInfoServerCommand => new Command<Server>(async (server) => await ServerInfoNavigate(server));
-
         public ICommand SaveServerCommand => new Command<Server>(async (server) => await SaveServer(server));
 
 
@@ -129,17 +127,8 @@ namespace SampRcon.ViewModels.SACNR
         private async Task AuthRconNavigate(Server server)
         {
             var jsonServer = SerializeServer(server);
-            ShellNavigationState state = Shell.Current.CurrentState;
 
-            await Shell.Current.GoToAsync($"{state.Location}/authenticationrconview?currentServer={jsonServer}");
-        }
-
-        private async Task ServerInfoNavigate(Server server)
-        {
-            var jsonServer = SerializeServer(server);
-            ShellNavigationState state = Shell.Current.CurrentState;
-
-            await Shell.Current.GoToAsync($"{state.Location}/serversInfoView?currentServer={jsonServer}");
+            await Shell.Current.GoToAsync($"/rconLogin?currentServer={jsonServer}");
         }
 
         private async Task<string> ProcessURLAsync(string url, HttpClient client)
