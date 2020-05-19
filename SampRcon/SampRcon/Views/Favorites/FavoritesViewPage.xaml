@@ -28,6 +28,9 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <SwipeView>
+                                <SwipeView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                </SwipeView.GestureRecognizers>
                                 <SwipeView.RightItems>
                                     <SwipeItems>
                                         <SwipeItem Invoked="DeleteSwipeItem_Invoked"

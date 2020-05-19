@@ -24,6 +24,13 @@ namespace SampRcon.Views.Favorites
             serversCollection.SetBinding(CollectionView.ItemsSourceProperty, nameof(vm.FavoritesServers));
         }
 
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            var server = GetServerFromSwipeClick((Element)sender);
+            var vm = (FavoritesViewModel)BindingContext;
+            vm.NavigateAuthRconCommand.Execute(server);
+        }
+
         private void RconSwipeItem_Invoked(object sender, System.EventArgs e)
         {
             var server = GetServerFromSwipeClick(((SwipeItem)sender).Parent);
