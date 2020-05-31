@@ -32,7 +32,9 @@ SA-MP RCON is available for the following platforms:
 <img src="https://1.bp.blogspot.com/-2EHP86-65eQ/Xq2qE-KWpjI/AAAAAAAACc4/fo_ARhwGXwoWhDawDBUmW5FAKIbNbyBlQCLcBGAsYHQ/s1600/2020-05-02_19-12-33.gif">
 
 # Download 
-<a href="https://play.google.com/store/apps/details?id=com.samprcon" target="_blank">Google Play</a>
+<a href="https://play.google.com/store/apps/details?id=com.samprcon">
+<img src="https://1.bp.blogspot.com/-LiTjK_qqcyI/XtJ_s6HXppI/AAAAAAAACgA/0qXLL3i4eNshIyEnnIxR3zZMz6Aqp8nMwCLcBGAsYHQ/s200/getAndroid.png" width="200" height="60">
+</a>
 
 # Copyright and license 
 Code released under the <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank">GNU Affero General Public License</a>. 
