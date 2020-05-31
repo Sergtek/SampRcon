@@ -37,13 +37,7 @@ namespace SampRcon.ViewModels.Credits
         private void InitializeCreditsItems()
         {
             CreditsItems = new ObservableCollection<CreditsItem>
-            {
-                new CreditsItem
-                {
-                    Title = AppResources.ResourceManager.GetString("DonateLabel"),
-                    LinkValue = AppResources.ResourceManager.GetString("DonateName"),
-                    Url = "https://www.paypal.com/pools/c/8oehPDNLug"
-                },                
+            {              
                 new CreditsItem
                 {
                     Title = AppResources.ResourceManager.GetString("CreditsOpenCodeLabel"),
