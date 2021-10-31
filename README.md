@@ -1,3 +1,5 @@
+# In the future a new repository for SA-MP RCON will be published that will be cross-platform (Android, iOS, WinUI 3 and macOS), open source and will use the future <a href="https://github.com/dotnet/maui" target="_blank">.NET MAUI</a>. For all these reasons, this repository will be kept archived and in read mode.
+
 # SampRcon
 Features of the app:
 <ul>
