@@ -1,6 +1,9 @@
-# In the future a new repository for SA-MP RCON will be published that will be cross-platform (Android, iOS, WinUI 3 and macOS), open source and will use the future <a href="https://github.com/dotnet/maui" target="_blank">.NET MAUI</a>. For all these reasons, this repository will be kept archived and in read mode.
+## Do you like SA-MP RCON? Do you want to support the development of the future version based on .NET MAUI compatible for Android, iOS, WinUI 3 and macOS? Now you can buy me a coffee!
+<a href="https://www.buymeacoffee.com/nacompllo" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
 # SampRcon
+#### Note: In the future a new repository for SA-MP RCON will be published that will be cross-platform (Android, iOS, WinUI 3 and macOS), open source and will use the future <a href="https://github.com/dotnet/maui" target="_blank">.NET MAUI</a>.
+
 Features of the app:
 <ul>
   <li>Thanks to the <a href="https://monitor.sacnr.com/api.html" target="_blank">SACNR Monitor API</a>, the application displays a list of the servers that are online.</li>
