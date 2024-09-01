@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="#F8F8F8"
+             Title="{x:Static resx:AppResources.AddServerLabel}"
+             xmlns:resx="clr-namespace:SampRcon.Resources"
+             xmlns:base="clr-namespace:SampRcon.Views.Base"     
+             x:Class="SampRcon.Views.AddServer.AddServerViewPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView HorizontalScrollBarVisibility="Never"
+                    VerticalScrollBarVisibility="Always"
+                    Orientation="Vertical"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                <Grid BackgroundColor="Transparent"
+              Margin="20,10,20,0"
+              HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label 
+                Grid.Row="0"
+                Text="{x:Static resx:AppResources.IpLabel}"
+                FontAttributes="Bold"                
+                FontSize="Medium"
+                HorizontalOptions="Start"
+                VerticalOptions="StartAndExpand"/>
+                    <Entry 
+                Text="{Binding IpServer}"
+                Grid.Row="1"
+                FontSize="Medium"
+                ClearButtonVisibility="WhileEditing"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="StartAndExpand"/>
+                    <Label 
+                Grid.Row="2"
+                Text="{x:Static resx:AppResources.PortLabel}"
+                FontAttributes="Bold"
+                FontSize="Medium"
+                HorizontalOptions="Start"
+                VerticalOptions="StartAndExpand"/>
+                    <Entry 
+                Text="{Binding PortServer}"
+                Grid.Row="3"
+                FontSize="Medium"
+                ClearButtonVisibility="WhileEditing"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="StartAndExpand"/>
+                    <Button 
+                Grid.Row="4"
+                Text="{x:Static resx:AppResources.AddServerLabel}"
+                Command="{Binding SaveServerCommand}"
+                BackgroundColor="#233346"
+                TextColor="White"                
+                FontSize="Medium"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="StartAndExpand"/>
+                    <Label 
+                Grid.Row="5"
+                Text="{Binding ErrorAlertValue}"
+                TextColor="Red"
+                IsVisible="{Binding ErrorAlertVisible}"
+                FontAttributes="Bold"
+                FontSize="Medium"
+                HorizontalOptions="Start"
+                VerticalOptions="StartAndExpand"/>
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</base:ContentPageBase>

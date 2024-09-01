@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:hyperlink="clr-namespace:SampRcon.Controls.HyperlinkLabel"
+             xmlns:resx="clr-namespace:SampRcon.Resources"
+             xmlns:base="clr-namespace:SampRcon.Views.Base"                          
+             xmlns:valueconverters="clr-namespace:SampRcon.ValueConverters" 
+             Title="{x:Static resx:AppResources.CreditsViewTitle}"
+             x:Class="SampRcon.Views.Credits.CreditsViewPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <valueconverters:IsNullOrEmptyConverter x:Key="IsNullOrEmpty" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView HorizontalScrollBarVisibility="Never"
+                    VerticalScrollBarVisibility="Always"
+                    Orientation="Vertical"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                <StackLayout>
+                    <StackLayout Margin="20,20,20,0">
+                        <Label 
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="StartAndExpand">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding AppName}" />
+                                    <Span Text=" " />
+                                    <Span Text="{Binding AppVersion}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout
+                    Orientation="Vertical"
+                    Margin="0,20,0,20"
+                    BindableLayout.ItemsSource="{Binding CreditsItems}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Grid RowSpacing="20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label 
+                                        Grid.Row="0"
+                                        Text="{Binding Title}"
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="StartAndExpand">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label"
+                                             Binding="{Binding Title, Converter={StaticResource IsNullOrEmpty}}"
+                                             Value="False">
+                                                    <Setter Property="IsVisible" Value="False" />
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                        <hyperlink:HyperlinkLabel 
+                                        Grid.Row="1"
+                                        Text="{Binding LinkValue}"
+                                        Url="{Binding Url}"
+                                        FontAttributes="Bold"                
+                                        FontSize="Medium"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="StartAndExpand">
+                                            <hyperlink:HyperlinkLabel.Triggers>
+                                                <DataTrigger TargetType="Label"
+                                             Binding="{Binding LinkValue, Converter={StaticResource IsNullOrEmpty}}"
+                                             Value="False">
+                                                    <Setter Property="IsVisible" Value="False" />
+                                                </DataTrigger>
+                                            </hyperlink:HyperlinkLabel.Triggers>
+                                        </hyperlink:HyperlinkLabel>
+                                        <Image
+                                        Grid.Row="2"
+                                        Source="{Binding Icon}"
+                                        HorizontalOptions="CenterAndExpand"                    
+                                        HeightRequest="50"
+                                        WidthRequest="50">
+                                            <Image.Triggers>
+                                                <DataTrigger TargetType="Image"
+                                             Binding="{Binding Icon, Converter={StaticResource IsNullOrEmpty}}"
+                                             Value="False">
+                                                    <Setter Property="IsVisible" Value="False" />
+                                                </DataTrigger>
+                                            </Image.Triggers>
+                                        </Image>
+                                    </Grid>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</base:ContentPageBase>
+    

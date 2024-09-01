@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Visual="Material"
+             Title="{x:Static resx:AppResources.FavoritesViewTitle}"
+             xmlns:resx="clr-namespace:SampRcon.Resources" 
+             xmlns:base="clr-namespace:SampRcon.Views.Base"                          
+             xmlns:valueconverters="clr-namespace:SampRcon.ValueConverters"
+             x:Class="SampRcon.Views.Favorites.FavoritesViewPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <valueconverters:TrimValueConverter x:Key="TrimValue" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Add" Command="{Binding NavigateCommand}" CommandParameter="newServerView" Text="{x:Static resx:AppResources.ToolBarAdd}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                         Command="{Binding RefreshCommand}"
+                         Margin="10,10,10,10">
+                    <CollectionView x:Name="serversCollection"
+                                SelectionMode="None"                                                 
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                VerticalScrollBarVisibility="Always">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                            <SwipeView>
+                                <SwipeView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                </SwipeView.GestureRecognizers>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Invoked="DeleteSwipeItem_Invoked"
+                                                   Text="{x:Static resx:AppResources.SwipeDelete}"                                                                                                              
+                                                   IconImageSource="remove.png"
+                                                   BackgroundColor="Transparent" />
+                                        <SwipeItem Invoked="RconSwipeItem_Invoked"
+                                                   Text="{x:Static resx:AppResources.SwipeRcon}"
+                                                   IconImageSource="rcon.png"
+                                                   BackgroundColor="Transparent" />
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Frame HasShadow="False"
+                                   BorderColor="#ECECEC"
+                                   BackgroundColor="White"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand">
+                                    <Grid BackgroundColor="Transparent"
+                                      HorizontalOptions="FillAndExpand"
+                                      VerticalOptions="FillAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                <Label 
+                                Grid.Row="0"
+                                Text="{Binding Hostname, Converter={StaticResource TrimValue}}"
+                                TextColor="Black"
+                                FontSize="Medium"
+                                HorizontalOptions="Start"
+                                VerticalOptions="StartAndExpand"/>
+                                       <Label x:Name="serverIP"
+                                       Grid.Row="1"
+                                       TextColor="Black"
+                                       FontSize="Medium"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="StartAndExpand">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding IP}" />
+                                                    <Span Text=":" />
+                                                    <Span Text="{Binding Port}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label x:Name="ipServer" Text="{Binding IP}" IsVisible="False"/>
+                                    </Grid>
+                                </Frame>
+                            </SwipeView>
+                        </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <StackLayout>
+                            <Label Text="{x:Static resx:AppResources.EmptyCollectionFavorites}"
+                                   TextColor="Black"
+                                   Margin="10,25,10,5"
+                                   FontAttributes="Bold"
+                                   FontSize="18"
+                                   HorizontalOptions="Fill"
+                                   HorizontalTextAlignment="Center" />
+                        </StackLayout>
+                    </CollectionView.EmptyView>
+                </CollectionView>
+                </RefreshView>
+            <Label Margin="10"
+                   HorizontalOptions="Start"
+                   VerticalOptions="End"
+                   TextColor="Black"
+                   FontSize="Large">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{x:Static resx:AppResources.ServersLabel}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding FavoritesServers.Count}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>            
+    </ContentPage.Content>
+</base:ContentPageBase>
+    

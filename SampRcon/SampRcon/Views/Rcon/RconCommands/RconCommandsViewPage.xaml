@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:SampRcon.Resources"
+             xmlns:base="clr-namespace:SampRcon.Views.Base"                          
+             BackgroundColor="#F8F8F8"
+             Title="{x:Static resx:AppResources.RconViewTitle}"
+             x:Class="SampRcon.Views.Rcon.RconCommands.RconCommandsViewPage">
+    <ContentPage.Content>
+        <Grid BackgroundColor="Transparent"    
+              RowSpacing="0"
+              HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"
+                  BackgroundColor="Transparent"    
+                  RowSpacing="0"
+                  Margin="5,5,5,5"
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <CollectionView x:Name="commandsCollection" 
+                        ItemsSource="{Binding LogValue}"
+                        SelectionMode="None"      
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        VerticalScrollBarVisibility="Always">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="20,0,20,0">
+                                <Label Text="{Binding}" 
+                                           Margin="10,10,0,10"
+                                           FontSize="Medium" 
+                                           FontAttributes="Bold"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Grid Grid.Row="1" 
+                      BackgroundColor="Transparent"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70*"/>
+                        <ColumnDefinition Width="30*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Column="0" Grid.Row="1" BorderColor="#D6D4D4" HasShadow="False" Padding="1">
+                        <Entry 
+                    Margin="5,5,5,5"
+                    Text="{Binding CommandValue}"
+                    VerticalTextAlignment="Center"
+                    BackgroundColor="White"
+                    FontSize="Medium"
+                    ClearButtonVisibility="WhileEditing"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"/>
+                    </Frame>
+                    <Button x:Name="sendCommand"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Text="{x:Static resx:AppResources.RconSendButtonValue}"
+                    Command="{Binding SendRCONCommand}"
+                    BackgroundColor="#233346"
+                    TextColor="White"
+                    FontSize="Medium"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</base:ContentPageBase>

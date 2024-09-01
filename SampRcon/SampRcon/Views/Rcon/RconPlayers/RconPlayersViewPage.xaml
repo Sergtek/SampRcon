@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:SampRcon.Resources"     
+             xmlns:base="clr-namespace:SampRcon.Views.Base"             
+             Title="{x:Static resx:AppResources.PlayerLabel}"
+             x:Class="SampRcon.Views.Rcon.RconPlayers.RconPlayersViewPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Refresh" Command="{Binding RefreshCommand}" Text="{x:Static resx:AppResources.ToolBarRefresh}" Order="Primary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Margin="10,10,10,10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column ="0"
+                   HorizontalOptions="CenterAndExpand"
+                   Text="{x:Static resx:AppResources.PlayerIDLabel}"
+                   FontAttributes="Bold"
+                   FontSize="Medium"/>
+                <Label Grid.Column ="1"
+                   HorizontalOptions="CenterAndExpand"
+                   Text="{x:Static resx:AppResources.PlayerNameLabel}"
+                   FontAttributes="Bold"
+                   FontSize="Medium"/>
+                <Label Grid.Column ="2"
+                   HorizontalOptions="CenterAndExpand"                      
+                   Text="{x:Static resx:AppResources.PlayerScoreLabel}"
+                   FontAttributes="Bold"
+                   FontSize="Medium"/>
+                <Label Grid.Column ="3"
+                   HorizontalOptions="CenterAndExpand"                       
+                   Text="{x:Static resx:AppResources.PlayerPingLabel}"
+                   FontAttributes="Bold"                       
+                   FontSize="Medium"/>
+            </Grid>
+            <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                         Command="{Binding RefreshCommand}">
+                <CollectionView x:Name="playersCollection"
+                                ItemsSource="{Binding PlayersList}"
+                                SelectionMode="None"  
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                VerticalScrollBarVisibility="Always">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,0,0,10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column ="0"
+                                       HorizontalOptions="CenterAndExpand"
+                                       Text="{Binding Id}"
+                                       FontSize="Medium"/>
+                                <Label Grid.Column ="1"
+                                       HorizontalOptions="CenterAndExpand"                                       
+                                       Text="{Binding Name}"
+                                       FontSize="Medium"/>
+                                <Label Grid.Column ="2"
+                                       HorizontalOptions="CenterAndExpand"                                                                              
+                                       Text="{Binding Score}"
+                                       FontSize="Medium"/>
+                                <Label Grid.Column ="3"
+                                       HorizontalOptions="CenterAndExpand"                                                                              
+                                       Text="{Binding Ping}"
+                                       FontSize="Medium"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <StackLayout>
+                            <Label Text="{x:Static resx:AppResources.EmptyCollectionPlayers}"
+                                   Margin="10,25,10,5"
+                                   FontAttributes="Bold"
+                                   FontSize="18"
+                                   HorizontalOptions="Fill"
+                                   HorizontalTextAlignment="Center" />
+                        </StackLayout>
+                    </CollectionView.EmptyView>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</base:ContentPageBase>

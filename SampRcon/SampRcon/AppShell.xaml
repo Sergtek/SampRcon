@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:serversViews="clr-namespace:SampRcon.Views.Servers" 
+             xmlns:favoritesViews="clr-namespace:SampRcon.Views.Favorites" 
+             xmlns:creditsViews="clr-namespace:SampRcon.Views.Credits" 
+             xmlns:resx="clr-namespace:SampRcon.Resources"
+             x:Name="HomePage"
+             x:Class="SampRcon.AppShell">
+    <Shell.Resources>
+        <Style x:Key="BaseStyle" 
+               TargetType="Element">
+            <Setter Property="Shell.BackgroundColor" 
+                    Value="#455A64" />
+            <Setter Property="Shell.ForegroundColor" 
+                    Value="White" />
+            <Setter Property="Shell.TitleColor" 
+                    Value="White" />
+            <Setter Property="Shell.DisabledColor" 
+                    Value="#B4FFFFFF" />
+            <Setter Property="Shell.UnselectedColor" 
+                    Value="#95FFFFFF" />
+        </Style>
+        <Style x:Key="TabBackground"
+               TargetType="Element" 
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor" 
+                    Value="#233346" />
+        </Style>
+    </Shell.Resources>
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <StackLayout BackgroundColor="Black"
+                         HeightRequest="100">
+                <StackLayout HorizontalOptions="CenterAndExpand"
+                             VerticalOptions="CenterAndExpand">
+                    <Label Text="{x:Static resx:AppResources.HamburgerHeaderTitle}" 
+                       TextColor="White" 
+                       FontAttributes="Bold"
+                       FontSize="Medium" />
+                    <Label Text="{Binding Source={x:Reference HomePage}, Path=BindingContext.AppVersion}"
+                       TextColor="White" 
+                       FontAttributes="Bold"
+                       FontSize="Small" />
+                </StackLayout>
+            </StackLayout>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+
+    <FlyoutItem Route="samp"
+                FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Route="servers"
+                      Style="{StaticResource TabBackground}"
+                      Title="{x:Static resx:AppResources.ServersLabel}"
+                      Icon="serversIcon.png"
+                      ContentTemplate="{DataTemplate serversViews:ServersViewPage}" />
+        <ShellContent Route="favorites"
+                      Style="{StaticResource TabBackground}"
+                      Title="{x:Static resx:AppResources.FavoritesViewTitle}"
+                      Icon="favoritesIcon.png"
+                      ContentTemplate="{DataTemplate favoritesViews:FavoritesViewPage}" />
+        <ShellContent Route="credits"
+                      Style="{StaticResource TabBackground}"
+                      Title="{x:Static resx:AppResources.CreditsViewTitle}"
+                      Icon="creditsIcon.png"
+                      ContentTemplate="{DataTemplate creditsViews:CreditsViewPage}" />
+    </FlyoutItem>
+</Shell>

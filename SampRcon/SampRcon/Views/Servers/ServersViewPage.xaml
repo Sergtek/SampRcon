@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             BackgroundColor="#F8F8F8"
+             x:Name="ServersView"
+             xmlns:resx="clr-namespace:SampRcon.Resources"
+             xmlns:base="clr-namespace:SampRcon.Views.Base"
+             xmlns:valueconverters="clr-namespace:SampRcon.ValueConverters" 
+             xmlns:hyperlink="clr-namespace:SampRcon.Controls.HyperlinkLabel" 
+             xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+             Title="{x:Static resx:AppResources.ServersLabel}"
+             x:Class="SampRcon.Views.Servers.ServersViewPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <valueconverters:SacnrTotalServersConverter x:Key="SacnrTotalServersCount" />
+            <valueconverters:TrimValueConverter x:Key="TrimValueConverter" />
+            <valueconverters:IsNullOrEmptyConverter x:Key="NullOrEmptyConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Refresh" Command="{Binding RefreshItemsCommand}" Text="{x:Static resx:AppResources.ToolBarRefresh}" Order="Primary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Grid>
+                    <RefreshView Command="{Binding RefreshItemsCommand}"
+                                 IsRefreshing="{Binding IsRefreshing}"
+                                 Margin="10,10,10,10">
+                        <CollectionView ItemsSource="{Binding ServersList}"
+                            SelectionMode="None"  
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            VerticalScrollBarVisibility="Always">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <toolkit:Expander ExpandAnimationEasing="{x:Static Easing.Linear}"
+                                        CollapseAnimationEasing="{x:Static Easing.Linear}"
+                                        IsExpanded="{Binding IsDetailVisible, Mode=TwoWay}">
+                                        <toolkit:Expander.Header>
+                                            <Frame HasShadow="False"
+                                                    BorderColor="#ECECEC"
+                                                    BackgroundColor="White"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    VerticalOptions="FillAndExpand">
+                                                <Grid BackgroundColor="Transparent"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        VerticalOptions="FillAndExpand">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Label 
+                                                            Grid.Row="0"
+                                                            Text="{Binding Hostname, Converter={StaticResource TrimValueConverter}}"
+                                                            TextColor="Black"
+                                                            FontSize="Medium"
+                                                            HorizontalOptions="Start"
+                                                            VerticalOptions="StartAndExpand"/>
+                                                    <Label x:Name="serverIP"
+                                                            Grid.Row="1"
+                                                            TextColor="Black"
+                                                            FontSize="Medium"
+                                                            HorizontalOptions="Start"
+                                                            VerticalOptions="StartAndExpand">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="{Binding IP}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label x:Name="ipServer" Text="{Binding IP}" IsVisible="False"/>
+                                                </Grid>
+                                            </Frame>
+
+                                        </toolkit:Expander.Header>
+                                        <Grid BackgroundColor="Transparent"
+                                            Margin="10,10,10,10"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <StackLayout Grid.Row="0">
+                                                <StackLayout.Triggers>
+                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding Hostname, Converter={StaticResource NullOrEmptyConverter}}" Value="True">
+                                                        <Setter Property="IsVisible" Value="true" />
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding Hostname, Converter={StaticResource NullOrEmptyConverter}}" Value="False">
+                                                        <Setter Property="IsVisible" Value="false" />
+                                                    </DataTrigger>
+                                                </StackLayout.Triggers>
+                                                <Label 
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    TextColor="Black"
+                                                    FontAttributes="Bold"
+                                                    FontSize="Medium">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{x:Static resx:AppResources.ExpanderHostname}" />
+                                                            <Span Text=":" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label
+                                                    Text="{Binding Hostname, Converter={StaticResource TrimValueConverter}}"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    TextColor="Black"
+                                                    FontSize="Medium"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="1">
+                                                <StackLayout.Triggers>
+                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding Gamemode, Converter={StaticResource NullOrEmptyConverter}}" Value="True">
+                                                        <Setter Property="IsVisible" Value="true" />
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding Gamemode, Converter={StaticResource NullOrEmptyConverter}}" Value="False">
+                                                        <Setter Property="IsVisible" Value="false" />
+                                                    </DataTrigger>
+                                                </StackLayout.Triggers>
+                                                <Label
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    TextColor="Black"
+                                                    FontAttributes="Bold"
+                                                    FontSize="Medium">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{x:Static resx:AppResources.ExpanderGamemode}" />
+                                                            <Span Text=":" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label
+                                                    Text="{Binding Gamemode, Converter={StaticResource TrimValueConverter}}"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    TextColor="Black"
+                                                    FontSize="Medium"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="2">
+                                                <StackLayout.Triggers>
+                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding Language, Converter={StaticResource NullOrEmptyConverter}}" Value="True">
+                                                        <Setter Property="IsVisible" Value="true" />
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding Language, Converter={StaticResource NullOrEmptyConverter}}" Value="False">
+                                                        <Setter Property="IsVisible" Value="false" />
+                                                    </DataTrigger>
+                                                </StackLayout.Triggers>
+                                                <Label
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    TextColor="Black"
+                                                    FontAttributes="Bold"
+                                                    FontSize="Medium">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{x:Static resx:AppResources.ExpanderLanguage}" />
+                                                            <Span Text=":" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label
+                                                    Text="{Binding Language, Converter={StaticResource TrimValueConverter}}"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    TextColor="Black"
+                                                    FontSize="Medium"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="3">
+                                                <StackLayout.Triggers>
+                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding Map, Converter={StaticResource NullOrEmptyConverter}}" Value="True">
+                                                        <Setter Property="IsVisible" Value="true" />
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding Map, Converter={StaticResource NullOrEmptyConverter}}" Value="False">
+                                                        <Setter Property="IsVisible" Value="false" />
+                                                    </DataTrigger>
+                                                </StackLayout.Triggers>
+                                                <Label
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    TextColor="Black"
+                                                    FontAttributes="Bold"
+                                                    FontSize="Medium">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{x:Static resx:AppResources.ExpanderMap}" />
+                                                            <Span Text=":" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label
+                                                    Text="{Binding Map, Converter={StaticResource TrimValueConverter}}"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    TextColor="Black"
+                                                    FontSize="Medium"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="4">
+                                                <StackLayout.Triggers>
+                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding Version, Converter={StaticResource NullOrEmptyConverter}}" Value="True">
+                                                        <Setter Property="IsVisible" Value="true" />
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding Version, Converter={StaticResource NullOrEmptyConverter}}" Value="False">
+                                                        <Setter Property="IsVisible" Value="false" />
+                                                    </DataTrigger>
+                                                </StackLayout.Triggers>
+                                                <Label
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    TextColor="Black"
+                                                    FontAttributes="Bold"
+                                                    FontSize="Medium">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{x:Static resx:AppResources.ExpanderVersion}" />
+                                                            <Span Text=":" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label
+                                                    Text="{Binding Version, Converter={StaticResource TrimValueConverter}}"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    TextColor="Black"
+                                                    FontSize="Medium"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="5">
+                                                <StackLayout.Triggers>
+                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding Time, Converter={StaticResource NullOrEmptyConverter}}" Value="True">
+                                                        <Setter Property="IsVisible" Value="true" />
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding Time, Converter={StaticResource NullOrEmptyConverter}}" Value="False">
+                                                        <Setter Property="IsVisible" Value="false" />
+                                                    </DataTrigger>
+                                                </StackLayout.Triggers>
+                                                <Label
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    TextColor="Black"
+                                                    FontAttributes="Bold"
+                                                    FontSize="Medium">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{x:Static resx:AppResources.ExpanderTime}" />
+                                                            <Span Text=":" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label
+                                                    Text="{Binding Time, Converter={StaticResource TrimValueConverter}}"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    TextColor="Black"
+                                                    FontSize="Medium"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="6">
+                                                <StackLayout.Triggers>
+                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding WebURL, Converter={StaticResource NullOrEmptyConverter}}" Value="True">
+                                                        <Setter Property="IsVisible" Value="true" />
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding WebURL, Converter={StaticResource NullOrEmptyConverter}}" Value="False">
+                                                        <Setter Property="IsVisible" Value="false" />
+                                                    </DataTrigger>
+                                                </StackLayout.Triggers>
+                                                <Label
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    TextColor="Black"
+                                                    FontAttributes="Bold"
+                                                    FontSize="Medium">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{x:Static resx:AppResources.ExpanderWebURL}" />
+                                                            <Span Text=":" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <hyperlink:HyperlinkLabel
+                                                    Text="{Binding WebURL}" 
+                                                    Url="{Binding WebURL}" 
+                                                    FontSize="Medium"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="StartAndExpand"/>
+                                            </StackLayout>
+                                        </Grid>
+                                    </toolkit:Expander>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                            <CollectionView.EmptyView>
+                                <StackLayout>
+                                    <Label Text="{x:Static resx:AppResources.EmptyCollectionServers}"
+                                       TextColor="Black"
+                                       Margin="10,25,10,5"
+                                       FontAttributes="Bold"
+                                       FontSize="18"
+                                       HorizontalOptions="Fill"
+                                       HorizontalTextAlignment="Center" />
+                                </StackLayout>
+                            </CollectionView.EmptyView>
+                        </CollectionView>
+                    </RefreshView>
+                    <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                       HeightRequest="40"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       WidthRequest="40"/>
+                </Grid>
+
+            </StackLayout>
+            <Grid HorizontalOptions="FillAndExpand" 
+                  VerticalOptions="Start"
+                  ColumnSpacing="0"
+                  RowSpacing="0"
+                  ColumnDefinitions="5*,5*" 
+                  RowDefinitions="Auto">
+                <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Margin="10"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start"
+                   TextColor="Black"
+                   FontSize="Medium">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{x:Static resx:AppResources.ServersLabel}" />
+                            <Span Text=": " />
+                            <Span Text="{Binding ServersList.Count}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Margin="10"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start"
+                   TextColor="Black"
+                   FontSize="Medium">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{x:Static resx:AppResources.PlayerLabel}" />
+                            <Span Text=": " />
+                            <Span Text="{Binding Players}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</base:ContentPageBase>
+    
