@@ -16,8 +16,8 @@ Whether you need to perform routine maintenance or quickly respond to unexpected
 ## 📱 System Requirements
 SA-MP RCON is compatible with a wide range of Android devices:
 
-- 🟢 Minimum version: Android 5.0 (Lollipop) and above
-- 🎯 Target version: Android 14 and above
+- 🟢 Minimum version: Android 5.0 (Lollipop)
+- 🎯 Target version: Android 14
 
 ## 🚀 Project Journey & Future
 
