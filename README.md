@@ -45,7 +45,7 @@ This version no longer receives updates as I'm focused on other projects. Howeve
 - 🧪 Unit testing
 - 🌟 Best coding practices
 - 📱 Possible F-Droid publication
-- 🖥️ Potential support for iOS, Windows, and Linux
+- 🖥️ Potential support for iOS, macOS, Windows and Linux
 
 👐 **Open Invitation:** Whether you're here to use the app, learn from it, or dream about its future, you're part of this journey. The code is open for all to see, use, and learn from.
 
